@@ -1,0 +1,100 @@
+{
+  "kit_version": "0.3.0",
+  "scope": "Repository profile: BD -> PG guide -> PG -> Testspec -> DD -> UT -> acceptance; human gates G0-G5",
+  "deliverable_language": "ja",
+  "quality": {
+    "c1_percent": 100,
+    "c2_percent": 100,
+    "required_cases": "PASS"
+  },
+  "steps": [
+    {
+      "id": "S1",
+      "skill": "../skills/01-pg-guide/SKILL.md",
+      "outputs": [
+        "task.md",
+        "pg-guide.md",
+        "source-manifest.md",
+        "QA.md"
+      ],
+      "gate": "G0"
+    },
+    {
+      "id": "S2",
+      "skill": "../skills/02-pg/SKILL.md",
+      "outputs": [
+        "pg-implementation.md",
+        "pg-artifact-manifest.md"
+      ],
+      "gate": "G1",
+      "manifests": [
+        "pg-artifact-manifest.md"
+      ]
+    },
+    {
+      "id": "S3",
+      "skill": "../skills/03-testspec/SKILL.md",
+      "outputs": [
+        "quality-plan.md",
+        "ut-design.md",
+        "decision-table.md"
+      ],
+      "gate": "G2"
+    },
+    {
+      "id": "S4",
+      "skill": "../skills/04-dd/SKILL.md",
+      "outputs": [
+        "DD.md",
+        "review.md"
+      ],
+      "gate": "G3",
+      "reviews": [
+        "review.md"
+      ]
+    },
+    {
+      "id": "S5",
+      "skill": "../skills/05-ut-code/SKILL.md",
+      "outputs": [
+        "implementation.md",
+        "code-review.md",
+        "artifact-manifest.md"
+      ],
+      "gate": "G4",
+      "reviews": [
+        "code-review.md"
+      ],
+      "manifests": [
+        "artifact-manifest.md"
+      ]
+    },
+    {
+      "id": "S6",
+      "skill": "../skills/06-test-evidence/SKILL.md",
+      "outputs": [
+        "test-report.md",
+        "coverage.md",
+        "traceability.md",
+        "exceptions.md",
+        "evidence-manifest.md"
+      ],
+      "gate": null
+    },
+    {
+      "id": "S7",
+      "skill": "../skills/07-acceptance/SKILL.md",
+      "outputs": [
+        "acceptance.md"
+      ],
+      "gate": "G5",
+      "reviews": [
+        "acceptance.md"
+      ],
+      "manifests": [
+        "artifact-manifest.md",
+        "evidence-manifest.md"
+      ]
+    }
+  ]
+}
