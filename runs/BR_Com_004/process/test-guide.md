@@ -71,7 +71,7 @@ $body = @{ roomId = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa3"; machineId = "TAB-C-0
 Invoke-RestMethod -Method Post -Uri https://localhost:5101/private/tablet-info -Headers $h -ContentType "application/json" -Body $body
 ```
 
-Kỳ vọng mã lỗi: `roomId` thiếu/sai GUID hoặc phần tử `candidateRoomIds` sai GUID → 400 (validation); không có token → 401; token không có role Administrator → 403; machine_id trùng phòng khác → 422 với `E_BRCOM004_001`.
+Kỳ vọng mã lỗi: `roomId` thiếu/sai GUID hoặc phần tử `candidateRoomIds` sai GUID → 400 (validation); không có token → 401 (cả 3 API); API_004/005: token không có role `Administrator` → 403; API_008: token không có role `InternalUser` hoặc `Administrator` → 403 (A-20); machine_id trùng phòng khác → 422 với `E_BRCOM004_001`.
 
 Chi tiết endpoint xem `RasApi\Controllers\TabletInfoController.cs` (`private/tablet-info`), `RoomsController.cs` (`private/rooms-mst-list`) và `pg-implementation.md`.
 

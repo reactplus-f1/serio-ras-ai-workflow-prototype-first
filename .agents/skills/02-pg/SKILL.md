@@ -37,11 +37,12 @@ BR_COM_004_RULES nếu PoC. Config/code thật của module trong repo user đư
    khi code → ghi giả định mới `A-xx` trong pg-implementation (mục "Giả định phát sinh"),
    không dừng.
 4. Build/lint khi được phép, ghi kết quả thật; không deploy, không chạy SQL seed.
-5. Kiểm kê branch/atomic condition thực tế trong code cho S3.
+5. Kiểm kê branch/atomic condition thực tế trong code cho S3 (đối chiếu) và S4 (Testspec).
 6. Lập pg-artifact-manifest liệt kê từng file đã sửa. **Không commit**: liệt kê file để
    user commit. Code commit là tùy chọn, không dùng để khóa S2; chỉ ghi SHA nếu user cung cấp.
-   Không bịa commit.
-7. Ghi process log; `kit.py check` đến `READY`.
+   Không bịa commit. Bổ sung vào source-manifest.md mọi nguồn dùng ở S2 (API一覧, テーブル設計書,
+   repo source/DDL kèm commit) với Category/Version.
+7. Ghi log công việc vào `log/作業ログ.docx` (`worklog.py add`, `rules/WORKLOG_RULES.md`; kể cả bản đầu AI tạo, lần sửa và thử thất bại); `kit.py check` đến `READY`.
 
 ## Output
 
@@ -57,6 +58,8 @@ nghiệp vụ.
 
 ## Dừng và bàn giao
 
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+(`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G1 và dừng: danh sách file để user commit và review.
 User thấy code sai → yêu cầu làm lại từ G1 trong chat.
 G1 không cho phép merge/push/deploy. Không tự xác nhận, không Git.

@@ -2,7 +2,7 @@
 
 Danh sách file PG và build/lint config đã review G1. Path tuyệt đối hoặc tương đối từ task.
 Role ghi rõ production-code hoặc build-config.
-Không yêu cầu UT code tại G1. Danh sách PG/UT cuối nằm trong artifact-manifest.md ở S5.
+Không yêu cầu UT code tại G1. Danh sách PG/UT cuối nằm trong artifact-manifest.md ở S6.
 File thiếu chặn kiểm tra. User tự commit; SHA ghi nếu có.
 
 Code commit: không bắt buộc (user tự commit trên branch `bd-to-pg`).
@@ -46,5 +46,9 @@ Code commit: không bắt buộc (user tự commit trên branch `bd-to-pg`).
 | F-33 | D:\Serio-AI\serio-ras\ras-web\src\app\shared\guards\admin.guard.ts | production-code (modified, shared: redirect → /error/403) |
 | F-34 | D:\Serio-AI\serio-ras\ras-web\src\app\shared\services\api-error-handler.service.ts | production-code (modified, shared: redirect → /error/{status}) |
 | F-35 | D:\Serio-AI\serio-ras\ras-web\src\assets\i18n\ja.json | production-code (modified, shared: i18n keys) |
+| F-38 | D:\Serio-AI\serio-ras\ras-system\src\Services\Ras\RasApi\Infrastructure\Authorization\AuthorizationPolicySetup.cs | production-code (new, review 2.4: policy role) |
+| F-39 | D:\Serio-AI\serio-ras\ras-system\src\Services\Ras\RasApi\Shared\Constants\AppRoles.cs | production-code (modified, shared: InternalUser) |
+| F-40 | D:\Serio-AI\serio-ras\ras-system\src\Services\Ras\RasApi\Shared\Constants\AuthorizationPolicies.cs | production-code (modified, shared: InternalUserOrAdministrator) |
+| F-41 | D:\Serio-AI\serio-ras\ras-system\src\Services\Ras\RasApi.ComponentTests\Authorization\ApiRoleAuthorizationTests.cs | test-code (new, review 2.4: 401/403 API_004/005/008) |
 | F-36 | D:\Serio-AI\serio-ras\ras-system\src\Services\Ras\RasApi\RasApi.csproj | build-config (không sửa; lệnh build) |
 | F-37 | D:\Serio-AI\serio-ras\ras-web\angular.json | build-config (không sửa; budget production có sẵn đang vượt) |

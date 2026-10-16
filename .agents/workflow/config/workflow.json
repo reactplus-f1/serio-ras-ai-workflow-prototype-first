@@ -1,6 +1,6 @@
 {
   "kit_version": "0.3.0",
-  "scope": "Repository profile: BD -> PG guide -> PG -> Testspec -> DD -> UT -> acceptance; human gates G0-G5",
+  "scope": "Repository profile: BD -> PG guide -> PG -> BD/PG reconciliation -> Testspec -> DD -> UT -> acceptance; human gates G0-G6",
   "deliverable_language": "ja",
   "quality": {
     "c1_percent": 100,
@@ -33,35 +33,43 @@
     },
     {
       "id": "S3",
-      "skill": "../skills/03-testspec/SKILL.md",
+      "skill": "../skills/03-reconcile/SKILL.md",
       "outputs": [
-        "quality-plan.md",
-        "ut-design.md",
-        "decision-table.md"
+        "reconciliation.md"
       ],
       "gate": "G2"
     },
     {
       "id": "S4",
-      "skill": "../skills/04-dd/SKILL.md",
+      "skill": "../skills/04-testspec/SKILL.md",
+      "outputs": [
+        "quality-plan.md",
+        "ut-design.md",
+        "decision-table.md"
+      ],
+      "gate": "G3"
+    },
+    {
+      "id": "S5",
+      "skill": "../skills/05-dd/SKILL.md",
       "outputs": [
         "DD.md",
         "review.md"
       ],
-      "gate": "G3",
+      "gate": "G4",
       "reviews": [
         "review.md"
       ]
     },
     {
-      "id": "S5",
-      "skill": "../skills/05-ut-code/SKILL.md",
+      "id": "S6",
+      "skill": "../skills/06-ut-code/SKILL.md",
       "outputs": [
         "implementation.md",
         "code-review.md",
         "artifact-manifest.md"
       ],
-      "gate": "G4",
+      "gate": "G5",
       "reviews": [
         "code-review.md"
       ],
@@ -70,8 +78,8 @@
       ]
     },
     {
-      "id": "S6",
-      "skill": "../skills/06-test-evidence/SKILL.md",
+      "id": "S7",
+      "skill": "../skills/07-test-evidence/SKILL.md",
       "outputs": [
         "test-report.md",
         "coverage.md",
@@ -82,12 +90,12 @@
       "gate": null
     },
     {
-      "id": "S7",
-      "skill": "../skills/07-acceptance/SKILL.md",
+      "id": "S8",
+      "skill": "../skills/08-acceptance/SKILL.md",
       "outputs": [
         "acceptance.md"
       ],
-      "gate": "G5",
+      "gate": "G6",
       "reviews": [
         "acceptance.md"
       ],

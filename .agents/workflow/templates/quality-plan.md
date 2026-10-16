@@ -1,10 +1,10 @@
 # Quality plan <Function ID>
 
-Lập ở S3, sau khi PG (G1) đã có: module và branch/condition lấy từ code thật, method
+Lập ở S4, sau khi PG (G1) đã có: module và branch/condition lấy từ code thật, method
 TOOL/MATRIX đã thử trên stack thật. Mục tiêu C1 = 100%, C2 = 100% trong phạm vi hợp lệ được
 người review xác nhận. Không thay bằng line coverage. Mọi case trong kế hoạch đã duyệt phải
 chạy và PASS. Ngoại lệ coverage cần bằng chứng không khả thi và quyết định của người review.
-Hồ sơ này được review tại G2 cùng ut-design.md.
+Hồ sơ này được review tại G3 cùng ut-design.md.
 
 ## Modules
 
@@ -26,7 +26,7 @@ thì báo N/A với inventory có evidence; không tự coi tỷ lệ 0/0 là 10
 | Real/mock dependencies and regression scope | PENDING | | |
 | Independent UT/code reviewer and acceptance owner | PENDING | | |
 
-Trạng thái phải READY (có owner và evidence) trước G2; chi tiết ghi ở UT Design /
-Readiness. Nếu thay scope, method hoặc plan đã đóng băng tại G2, user yêu cầu làm lại từ G2
+Trạng thái phải READY (có owner và evidence) trước G3; chi tiết ghi ở UT Design /
+Readiness. Nếu thay scope, method hoặc plan đã đóng băng tại G3, user yêu cầu làm lại từ G3
 và xác nhận lại trong chat.
 Thời gian chuẩn bị, review, rework, retest và evidence ghi vào báo cáo PoC.

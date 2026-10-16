@@ -2,7 +2,7 @@
 
 Profile 0.3.0 giữ chất lượng đã chốt: C1 = 100%, C2 = 100% trên scope hợp lệ từng module,
 mọi case trong kế hoạch chạy và PASS, không còn BLOCKER/MAJOR mở. MINOR ACCEPTED chỉ với
-quyết định người review. G2 chốt Testspec, G3 chốt DD, G4 chốt code/UT, G5 nghiệm thu.
+quyết định người review. G2 chốt đối chiếu BD↔PG, G3 chốt Testspec, G4 chốt DD, G5 chốt code/UT, G6 nghiệm thu.
 
 ## Định nghĩa và bằng chứng
 
@@ -20,9 +20,9 @@ quyết định người review. G2 chốt Testspec, G3 chốt DD, G4 chốt cod
 ## Expected và phạm vi kiểm chứng
 
 Expected từ BD/pg-guide đã duyệt (kể cả giả định `A-xx` được chấp nhận ở G0); Testspec có
-trước DD nên không yêu cầu DD tồn tại ở G2. PG dùng kiểm kê branches/conditions, không tạo
-expected từ hành vi code. DD ở S4 phải giữ Rules/Required và đối chiếu với BD/pg-guide/PG/
-Testspec. G3 review độc lập DD; G4 review
+trước DD nên không yêu cầu DD tồn tại ở G3. PG dùng kiểm kê branches/conditions, không tạo
+expected từ hành vi code. DD ở S5 phải giữ Rules/Required và đối chiếu với BD/pg-guide/PG/
+Testspec. G4 review độc lập DD; G5 review
 assertion, PG và test snapshot. Khi lệch, sửa sản phẩm sai qua gate chịu ảnh hưởng.
 
 UT design rule của khách yêu cầu decision table cho join patterns và conditional cases
@@ -47,6 +47,6 @@ tương đương thì không tự tính phần trăm tiết kiệm.
 Căn cứ: 単体テスト仕様書_ルール.xlsx / 単体テスト設計ルール!E16,E41,E57 và
 単体テスト仕様書作成方針!G19:G22; 単体テスト実施_ルール.xlsx /
 証跡取得・運用ルール一覧!C7,C19,C28,D28; kickoff 20261008 slides 7–8/16–17. Hai workbook này
-do user đưa ở S3/S6; khi cần xác nhận ô, yêu cầu file gốc.
+do user đưa ở S4/S7; khi cần xác nhận ô, yêu cầu file gốc.
 Counts/schema không xác thực reviewer hoặc chứng minh inventory/expected đúng; người review
 phải kiểm tra raw artifacts, code và nguồn. Không tự xác nhận finding, ngoại lệ hoặc gate.

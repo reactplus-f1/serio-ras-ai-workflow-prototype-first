@@ -23,5 +23,5 @@
 ## Ghi chú task
 
 Hồ sơ task là Markdown theo config/workflow.json. Code và artifacts ở repo code / nơi user
-chỉ định, liên kết qua manifest (đường dẫn). Điểm review G0–G5: user xác nhận trong chat; nguồn đã dùng ở
-source-manifest.md; quality-plan.md (S3) ghi phạm vi kiểm thử. Agent không thao tác Git.
+chỉ định, liên kết qua manifest (đường dẫn). Điểm review G0–G6: user xác nhận trong chat; nguồn đã dùng ở
+source-manifest.md; quality-plan.md (S4) ghi phạm vi kiểm thử. Agent không thao tác Git.

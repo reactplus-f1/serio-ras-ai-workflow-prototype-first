@@ -1,9 +1,9 @@
 ---
-name: 04-dd
-description: Viết DD tiếng Nhật S4 sau G2, đối chiếu BD/pg-guide/PG/Testspec và trình review G3 (gate DD).
+name: 05-dd
+description: Viết DD tiếng Nhật S5 sau G3, đối chiếu BD/pg-guide/PG/Testspec và trình review G4 (gate DD).
 ---
 
-# Skill 04-dd
+# Skill 05-dd
 
 ## Mục tiêu
 
@@ -11,12 +11,12 @@ DD tiếng Nhật đúng nghiệp vụ và phản ánh thiết kế thật, kèm
 
 ## Điều kiện chạy
 
-`next` chỉ định S4; user đã xác nhận G2 trong chat và các baseline trước còn hiệu lực. S4 không tự xác nhận DD.
+`next` chỉ định S5; user đã xác nhận G3 trong chat và các baseline trước còn hiệu lực. S5 không tự xác nhận DD.
 
 ## Input (user đưa)
 
 - **Nếu có**: mẫu 詳細設計書 / API定義書 của Serio (để giữ cấu trúc Serio quen đọc).
-- Từ run: pg-guide G0, PG snapshot G1, Testspec G2.
+- Từ run: pg-guide G0, PG snapshot G1, reconciliation G2, Testspec G3.
 
 Agent đọc: ARCHITECTURE_RULES, UI_RULES, BR_COM_004_RULES; template DD/review.
 
@@ -39,10 +39,12 @@ DD tiếng Nhật, nguồn đầy đủ, IDs và mapping giữ nguyên; review k
 
 ## Dừng và bàn giao
 
-Báo cáo bốn mục (AGENTS.md), trình G3 (review DD) và dừng. Chỉ khi user xác nhận G3 trong chat thì DD mới chốt;
-S5 bắt đầu sau đó. Không tự xác nhận, không Git.
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+(`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
+Báo cáo bốn mục (AGENTS.md), trình G4 (review DD) và dừng. Chỉ khi user xác nhận G4 trong chat thì DD mới chốt;
+S6 bắt đầu sau đó. Không tự xác nhận, không Git.
 
 ## Lỗi thường gặp
 
-Đặt DD trước PG/Testspec; gọi DD đã chốt khi user chưa xác nhận G3; thay baseline đã duyệt; tạo chi tiết kỹ
+Đặt DD trước PG/Testspec; gọi DD đã chốt khi user chưa xác nhận G4; thay baseline đã duyệt; tạo chi tiết kỹ
 thuật thiếu nguồn.

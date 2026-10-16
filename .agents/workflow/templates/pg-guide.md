@@ -83,9 +83,9 @@ DB, component màn hình, validation client, message, chuyển màn, quyền.
 | Bước | Tài liệu | Bắt buộc / nếu có | Trạng thái |
 |---|---|---|---|
 | S2 PG | Đường dẫn repo code, branch, API一覧, テーブル設計書 | Bắt buộc | PENDING |
-| S3 Testspec | 単体テスト仕様書_ルール | Bắt buộc | PENDING |
-| S4 DD | Mẫu 詳細設計書 / API定義書 | Nếu có | PENDING |
-| S6 Evidence | 単体テスト実施_ルール, môi trường, tool coverage | Bắt buộc | PENDING |
+| S4 Testspec | 単体テスト仕様書_ルール | Bắt buộc | PENDING |
+| S5 DD | Mẫu 詳細設計書 / API定義書 | Nếu có | PENDING |
+| S7 Evidence | 単体テスト実施_ルール, môi trường, tool coverage | Bắt buộc | PENDING |
 
 Không suy rule từ code mẫu. Inventory nhánh/điều kiện code thực tế được kiểm tra ở
-S2/S3/S5/S6.
+S2/S4/S6/S7.

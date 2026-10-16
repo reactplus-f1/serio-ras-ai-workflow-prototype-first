@@ -36,6 +36,7 @@ không thuộc BR_Com_004. Chọn project theo task, không build cả solution.
 | ras-web | npm ci; npm run lint; npm run build; npm test |
 | API | dotnet build <RasApi.csproj> |
 | UT | dotnet test <RasApi.UnitTests csproj> |
+| Chạy local DB/BE/FE | Theo `README.md` của serio-ras, mục "Chạy môi trường local" (Docker `ras-pg` 5432, BE `dotnet run` trong RasApi, FE `npm start`) |
 
 Lệnh có mặt không chứng minh môi trường, UT hay C1/C2 đạt. Tool đo C2 phải thử trên stack
 thật; không suy atomic T/F từ branch coverage. Không cài tool/dependency, không chạy SQL

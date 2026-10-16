@@ -1,9 +1,9 @@
 ---
-name: 03-testspec
-description: Thiết kế Testspec S3 sau G1; expected từ BD/pg-guide đã duyệt, inventory từ PG; dừng G2.
+name: 04-testspec
+description: Thiết kế Testspec S4 sau G2 (đối chiếu BD↔PG); expected từ BD/pg-guide đã duyệt, inventory từ PG; dừng G3.
 ---
 
-# Skill 03-testspec
+# Skill 04-testspec
 
 ## Mục tiêu
 
@@ -13,14 +13,15 @@ thử tool coverage.
 
 ## Điều kiện chạy
 
-`next` chỉ định S3; user đã xác nhận G1 trong chat; G0 vẫn là baseline. DD chưa là input bắt buộc.
+`next` chỉ định S4; user đã xác nhận G2 (đối chiếu BD↔PG) trong chat; G0/G1 vẫn là baseline. DD chưa là input bắt buộc.
 
 ## Input (user đưa)
 
 - **Bắt buộc**: 単体テスト仕様書_ルール của Serio. Thiếu → hỏi và dừng.
 - **Nếu có**: mẫu UT spec/decision table của Serio.
 - Từ run: pg-guide.md G0 (Rules, atomic conditions, giả định `A-xx` đã duyệt), PG
-  snapshot/inventory G1 (pg-implementation.md, pg-artifact-manifest.md).
+  snapshot/inventory G1 (pg-implementation.md, pg-artifact-manifest.md), reconciliation.md G2
+  (Rule nào MATCH, Finding đã quyết định thế nào).
 
 Agent đọc: QUALITY_RULES, QUALITY_RECORDS.
 
@@ -31,7 +32,9 @@ MATRIX sau khi thử trên stack thật, ghi evidence plan. Lập case thường
 precondition/input/expected/source và Case ID. Đối chiếu Rules
 bắt buộc; condition T/F mapping kể cả short-circuit. Decision table cho join/tổ hợp; mỗi
 pattern có case. Expected **từ BD/pg-guide đã duyệt**, không từ kết quả PG; PG chỉ cho
-inventory. Readiness 5 mục có owner/evidence thật; thiếu tool C2 ghi chưa xác minh.
+inventory. Rule `DEVIATION` chưa sửa vẫn lập case với expected từ BD (case sẽ FAIL
+đến khi sửa); Rule `CONFIRM` dùng giả định đã duyệt ở G2. Bắt buộc có case quyền cho
+mỗi API: chưa đăng nhập (401), role không được phép (403), role được phép. Readiness 5 mục có owner/evidence thật; thiếu tool C2 ghi chưa xác minh.
 
 ## Output
 
@@ -47,7 +50,9 @@ Kế hoạch chưa chứng minh coverage chạy.
 
 ## Dừng và bàn giao
 
-Báo cáo bốn mục (AGENTS.md), trình G2 và dừng; nêu tài liệu cần cho S4 (mẫu DD/API定義書
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+(`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
+Báo cáo bốn mục (AGENTS.md), trình G3 và dừng; nêu tài liệu cần cho S5 (mẫu DD/API定義書
 nếu Serio có). Không tự xác nhận, không Git.
 
 ## Lỗi thường gặp

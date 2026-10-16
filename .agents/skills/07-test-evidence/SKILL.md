@@ -1,9 +1,9 @@
 ---
-name: 06-test-evidence
-description: Chạy UT S6 sau G4 và thu evidence C1/C2 thật; chuẩn bị hồ sơ S7 khi mọi kiểm tra đạt.
+name: 07-test-evidence
+description: Chạy UT S7 sau G5 và thu evidence C1/C2 thật; chuẩn bị hồ sơ S8 khi mọi kiểm tra đạt.
 ---
 
-# Skill 06-test-evidence
+# Skill 07-test-evidence
 
 ## Mục tiêu
 
@@ -11,7 +11,7 @@ Chứng minh execution, coverage và truy vết đúng phiên bản; không tự
 
 ## Điều kiện chạy
 
-`next` chỉ định S6; user đã xác nhận G4 trong chat; đúng code/test/data/tool snapshot; **user cho
+`next` chỉ định S7; user đã xác nhận G5 trong chat; đúng code/test/data/tool snapshot; **user cho
 phép chạy** trên môi trường chỉ định.
 
 ## Input (user đưa)
@@ -44,7 +44,9 @@ quán; ngoại lệ có quyết định con người. Thiếu evidence → NOT V
 
 ## Dừng và bàn giao
 
-S6 không có gate riêng. Báo cáo bốn mục (AGENTS.md); đạt thì chuẩn bị S7; còn FAIL/thiếu
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+(`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
+S7 không có gate riêng. Báo cáo bốn mục (AGENTS.md); đạt thì chuẩn bị S8; còn FAIL/thiếu
 evidence thì báo và dừng. Không tự xác nhận, không Git.
 
 ## Lỗi thường gặp

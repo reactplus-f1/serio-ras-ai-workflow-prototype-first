@@ -18,6 +18,6 @@
 | Exceptions are real human decisions, not agent assumptions | NOT VERIFIED | |
 | Handoff format, receiver and artifact access | NOT VERIFIED | |
 
-Mọi Check phải PASS hoặc N/A kèm bằng chứng/giải thích không áp dụng trước G5.
+Mọi Check phải PASS hoặc N/A kèm bằng chứng/giải thích không áp dụng trước G6.
 Severity/Status/Decision theo code-review.md. Agent có thể kết luận kiểm tra PASS
-nhưng không ghi xác nhận thay user. Chỉ người có trách nhiệm duyệt G5, sau review kỹ thuật và nghiệp vụ.
+nhưng không ghi xác nhận thay user. Chỉ người có trách nhiệm duyệt G6, sau review kỹ thuật và nghiệp vụ.

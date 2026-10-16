@@ -227,7 +227,7 @@ UseCase → Controller → DI/validation → frontend.
 | P-14 Guard quyền màn | R-001 | ras-web/src/app/shared/guards (tái dùng) + route của feature | Route guard theo role システム管理者; không có → điều hướng tới BR_Com_005 mock với status 403; interceptor 403 từ API cũng điều hướng về mock | auth guard / interceptor hiện có | BR_Com_005 |
 | P-15 Mock BR_Com_005 | R-001 | ras-web/src/app/features/bulk-reservation-error-mock (hoặc vị trí mock của repo) | Trang/route mock nhận tham số status code (403) và hiển thị code đó; không logic khác | — | **Mock** |
 | P-16 Mock BR_Com_003 | R-011, R-012, R-013 | ras-web/src/app/features/room-search-mock | Modal/route mock: IN `roomIds: string[]`, `rankSelectable: 0`; hiển thị checkbox list phòng từ API_008 pre-check theo IN; OK → OUT `{roomId, roomName}[]` (có thể rỗng); Cancel → không OUT (C-012) | select/list components, dialog của repo | **Mock** |
-| P-17 Unit test scaffold | R-015, R-018, R-019, R-022 | ras-system/src/Services/Ras/RasApi.UnitTests | Chỉ tạo project/thư mục test cho module mới nếu repo yêu cầu để build; **không** viết UT ở S2 (S5) | Test project hiện có | — |
+| P-17 Unit test scaffold | R-015, R-018, R-019, R-022 | ras-system/src/Services/Ras/RasApi.UnitTests | Chỉ tạo project/thư mục test cho module mới nếu repo yêu cầu để build; **không** viết UT ở S2 (S6) | Test project hiện có | — |
 
 ## Tài liệu cần cho bước sau
 
@@ -239,9 +239,9 @@ UseCase → Controller → DI/validation → frontend.
 | S1 | BD của BR_Com_003 / BR_Com_005 | Nếu có | PENDING — mock contract tạm theo RULES004 (A-07, A-08) |
 | S1 | Người phụ trách (nghiệp vụ / thiết kế / reviewer / nghiệm thu) | Nếu có | PENDING — task.md chưa ghi |
 | S2 PG | Đường dẫn repo code = `serio-ras` (user chỉ định), branch được giao, quyền build/lint; API一覧, テーブル設計書 | Bắt buộc | Repo đã có; **branch và quyền build/lint PENDING**; API一覧/テーブル設計書 PENDING |
-| S3 Testspec | 単体テスト仕様書_ルール | Bắt buộc | PENDING |
-| S4 DD | Mẫu 詳細設計書 / API定義書 | Nếu có | PENDING |
-| S6 Evidence | 単体テスト実施_ルール, môi trường, tool coverage | Bắt buộc | PENDING |
+| S4 Testspec | 単体テスト仕様書_ルール | Bắt buộc | PENDING |
+| S5 DD | Mẫu 詳細設計書 / API定義書 | Nếu có | PENDING |
+| S7 Evidence | 単体テスト実施_ルール, môi trường, tool coverage | Bắt buộc | PENDING |
 
 Không suy rule từ code mẫu. Inventory nhánh/điều kiện code thực tế được kiểm tra ở
-S2/S3/S5/S6.
+S2/S4/S6/S7.

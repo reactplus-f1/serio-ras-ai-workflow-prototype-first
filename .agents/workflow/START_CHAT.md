@@ -12,11 +12,13 @@ thiếu đầu vào *nếu có* → ghi PENDING, nêu ảnh hưởng và hỏi c
 liệu. Nội dung BD mơ hồ → tự chọn, ghi giả định `A-xx` trong pg-guide.md, không dừng.
 
 Hồ sơ là Markdown; giữ Rule/Condition/Case IDs; run/evidence phải thật; user tự commit. Dừng tại
-điểm review G0–G5 để người review xác nhận trong chat; không tự xác nhận, không thao tác Git. Kết thúc
+điểm review G0–G6 để người review xác nhận trong chat; không tự xác nhận, không thao tác Git. Kết thúc
 lượt bằng báo cáo bốn mục (AGENTS.md): đã làm, thành phẩm ở đâu, gate kế tiếp, cần user đưa
-thêm. Khi một bước đạt READY, cập nhật dồn báo cáo Word duy nhất của màn hình
-`runs/<ID>/process/報告_<ID>.docx` (WORKFLOW.md "Báo cáo tiến độ"); không tạo file báo cáo theo bước.
+thêm.
+Sau mỗi hoạt động tạo thay đổi (chạy bước, hiệu chỉnh, tạo lại, thử thất bại, chỉnh workflow/skill,
+chỉnh repo code/môi trường; không ghi hỏi đáp; mục yêu cầu viết dạng chỉ thị chuyên môn) ghi
+một mục vào `log/作業ログ.docx` bằng `worklog.py add` theo `rules/WORKLOG_RULES.md`.
 
-Luồng: BD → Hướng dẫn PG → PG → Testspec → DD → UT → Nghiệm thu (S1–S7, gate G0–G5). BR_Com_004 chỉ triển khai
+Luồng: BD → Hướng dẫn PG → PG → Đối chiếu BD↔PG → Testspec → DD → UT → Nghiệm thu (S1–S8, gate G0–G6). BR_Com_004 chỉ triển khai
 chức năng chính; BR_Com_003/005 gọi dưới dạng mock theo scope đã chốt.
 Yêu cầu sync/review tài liệu là bảo trì, không kích hoạt công đoạn task.

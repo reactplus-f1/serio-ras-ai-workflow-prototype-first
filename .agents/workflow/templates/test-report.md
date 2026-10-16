@@ -12,7 +12,7 @@
 | Data version | |
 
 Commit (nếu ghi) phải khớp implementation.md. Report từ kết quả chạy thật; AI không tự tạo PASS.
-Thêm từng case đã duyệt, cả FAIL/SKIPPED/NOT_RUN. Chỉ khi mọi case PASS mới sẵn sàng G5.
+Thêm từng case đã duyệt, cả FAIL/SKIPPED/NOT_RUN. Chỉ khi mọi case PASS mới sẵn sàng G6.
 
 ## Results
 

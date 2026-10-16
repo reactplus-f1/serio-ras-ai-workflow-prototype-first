@@ -12,11 +12,13 @@ rule tổng hợp nào. Mỗi file nhận được lưu vào `runs/<ID>/inputs/`
 |---|---|---|---|
 | S1 Hướng dẫn PG | BD (.xlsx); scope | Người phụ trách; API一覧, テーブル設計書; 画面共通仕様説明書, メッセージ一覧; BD của màn liên quan (003/005) cho mock contract; quyết định nghiệp vụ đã có | UI_RULES, ARCHITECTURE_RULES, REPOSITORY_RULES (cấu trúc tham chiếu, phần tiền đề), BR_COM_004_RULES nếu là PoC |
 | S2 PG | Đường dẫn repo code + branch; quyền build/lint; API一覧, テーブル設計書 | PG_ルール, APアーキテクチャ設計 | CODING_RULES, ARCHITECTURE_RULES, REPOSITORY_RULES, UI_RULES (nếu frontend) |
-| S3 Testspec | 単体テスト仕様書_ルール | Mẫu UT/decision table của Serio | QUALITY_RULES, QUALITY_RECORDS |
-| S4 DD | — | Mẫu 詳細設計書/API定義書 của Serio | ARCHITECTURE_RULES, UI_RULES, BR_COM_004_RULES |
-| S5 UT code | Quyền chạy test project; dữ liệu test | — | CODING_RULES, QUALITY_RULES, QUALITY_RECORDS |
-| S6 Evidence | 単体テスト実施_ルール; môi trường/DB/tool coverage; quyền chạy | — | QUALITY_RULES, QUALITY_RECORDS |
-| S7 Acceptance | — | — | QUALITY_RULES, QUALITY_RECORDS |
+| S3 Đối chiếu BD↔PG | — (dùng tài liệu CUSTOMER đã có trong source-manifest) | Câu trả lời QA của Serio | QUALITY_RULES, ARCHITECTURE_RULES, CODING_RULES |
+| S4 Testspec | 単体テスト仕様書_ルール | Mẫu UT/decision table của Serio | QUALITY_RULES, QUALITY_RECORDS |
+| S5 DD | — | Mẫu 詳細設計書/API定義書 của Serio | ARCHITECTURE_RULES, UI_RULES, BR_COM_004_RULES |
+| S6 UT code | Quyền chạy test project; dữ liệu test | — | CODING_RULES, QUALITY_RULES, QUALITY_RECORDS |
+| S7 Evidence | 単体テスト実施_ルール; môi trường/DB/tool coverage; quyền chạy | — | QUALITY_RULES, QUALITY_RECORDS |
+| S8 Acceptance | — | — | QUALITY_RULES, QUALITY_RECORDS |
+| Mọi bước, hiệu chỉnh, chỉnh workflow | — | Kết quả review/test của người | WORKLOG_RULES (ghi `log/作業ログ.docx` sau mỗi hoạt động) |
 
 Tài liệu đã đưa ở bước trước không cần đưa lại; agent đọc từ `runs/<ID>/inputs/` theo
 source-manifest.

@@ -9,7 +9,7 @@ Bình thường agent chạy lệnh này trong S1 từ BD user đưa (skill 01-p
 chạy trước nếu muốn; kết quả như nhau.
 
 ```powershell
-python .agents/workflow/scripts/kit.py init --task-dir runs/<Function-ID> --function-id <Function-ID> --bd "<BD.xlsx>" --scope "<scope>"
+python .agents/workflow/scripts/kit.py init --task-dir runs/<Function-ID> --function-id <Function-ID> --bd "runs/<Function-ID>/inputs/<BD.xlsx>" --scope "<scope>"
 ```
 
 `--bd` phải là đường dẫn ổn định (không phải file đính kèm tạm của chat); tên file tiếng
@@ -29,7 +29,7 @@ có thể `INCOMPLETE`. `next` báo bước chưa hoàn thành kế tiếp hoặ
 
 Sau khi review hồ sơ và có quyết định thật, user xác nhận trực tiếp trong chat (ví dụ: "tiếp tục S2", "đồng ý G0"). Không có file hay lệnh ghi nhận riêng. Nếu phát hiện sai, user yêu cầu agent làm lại từ bước/gate sớm nhất chịu ảnh hưởng.
 
-G0: người review đọc `pg-guide.md` — bảng "Giả định của AI" (chấp nhận/sửa từng dòng) và "Kế hoạch code". G1: user tự review code, không có file review riêng. G3/G4/G5 cần review tương ứng (review, code-review, acceptance) có `判定: PASS` và bảng Finding hợp lệ.
+G0: người review đọc `pg-guide.md` — bảng "Giả định của AI" (chấp nhận/sửa từng dòng) và "Kế hoạch code". G1: user tự review code, không có file review riêng. G2: người review đọc `reconciliation.md`, quyết định từng Finding (sửa PG / chấp nhận / hỏi Serio). G4/G5/G6 cần review tương ứng (review, code-review, acceptance) có `判定: PASS` và bảng Finding hợp lệ.
 
 ## Xem ô trong BD
 
@@ -42,14 +42,17 @@ python .agents/workflow/scripts/xlsx_view.py "<BD.xlsx>" --sheet イベント定
 shape ngoài ô hay ghi chú vùng merge; sheet tên `(非表示)…` vẫn được liệt kê. Phần layout
 và shape phải xem bằng Excel; agent ghi giới hạn này vào `pg-guide.md` (mục "Sheet đã đọc và giới hạn").
 
-## Báo cáo tiến độ Word
+## Log công việc Word
 
 ```powershell
-python runs/<Function-ID>/process/make_report.py "runs/<Function-ID>/process/報告_<Function-ID>.docx"
+python .agents/workflow/scripts/worklog.py add --json entry.json     # thêm L-xxx vào log/作業ログ.docx
+python .agents/workflow/scripts/worklog.py set --id L-003 --field status --value "Thất bại"
+python .agents/workflow/scripts/worklog.py list                    # bảng tổng hợp
+python .agents/workflow/scripts/worklog.py rebuild                 # dựng lại template + log theo format hiện tại
 ```
 
-Một file cho mỗi màn hình, cập nhật dồn sau mỗi bước (WORKFLOW.md "Báo cáo tiến độ"). Cần
-`pip install python-docx`; đặt `$env:PYTHONIOENCODING='utf-8'` để in tên file tiếng Nhật.
+Ghi sau mỗi hoạt động (`rules/WORKLOG_RULES.md`: 17 mục, key JSON, quy tắc ghi log). Người
+phụ trách có thể sửa trực tiếp trong Word (đóng Word trước khi chạy script). Cần `pip install python-docx`.
 
 ## Git
 

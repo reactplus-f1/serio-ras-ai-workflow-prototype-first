@@ -18,5 +18,5 @@ Không có Test commit tại G1 vì Testspec và UT code là công đoạn sau. 
 
 ## Branch and condition inventory
 
-Ghi vị trí các branch/atomic condition của PG để S3 lập case T/F. Đây là inventory,
+Ghi vị trí các branch/atomic condition của PG để S4 lập case T/F. Đây là inventory,
 chưa phải coverage đã chạy. Ghi real/mock limits và phần convention chưa xác minh.

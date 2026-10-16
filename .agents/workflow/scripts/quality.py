@@ -169,14 +169,25 @@ def metadata(dest, name):
     return values
 
 
+SOURCE_CATEGORIES = {"CUSTOMER", "INTERNAL", "SOURCE", "DERIVED"}
+
+
 def manifest(dest, name):
-    rows = records(read(dest, name), "Files", ["ID", "Path", "Role"], "ID")
+    sources = name == "source-manifest.md"
+    columns = ["ID", "Path", "Role"] + (["Category", "Version"] if sources else [])
+    rows = records(read(dest, name), "Files", columns, "ID")
     for row in rows.values():
         require(row["Role"], f"{name}: Role")
         path = Path(row["Path"])
         if not path.is_absolute():
             path = dest / path
-        if not path.is_file():
+        if sources:
+            if row["Category"] not in SOURCE_CATEGORIES:
+                raise QualityError(f"{name}: Category of {row['ID']} must be one of {sorted(SOURCE_CATEGORIES)}")
+            require(row["Version"], f"{name}: Version of {row['ID']}")
+        # Repositories (SOURCE) are recorded by their root directory; everything else is a file.
+        ok = path.is_file() or (sources and row["Category"] == "SOURCE" and path.is_dir())
+        if not ok:
             raise QualityError(f"{name}: missing artifact {row['ID']}")
     return rows
 
@@ -300,6 +311,36 @@ def evidence(dest):
     return scoped
 
 
+def reconciliation(dest):
+    body = read(dest, "reconciliation.md")
+    defined = rules(dest)
+    rows = records(body, "Rule reconciliation",
+                   ["Rule ID", "BD source", "BD expected", "Code location", "Status", "Evidence / note"], "Rule ID")
+    if set(rows) != set(defined):
+        missing, extra = sorted(set(defined) - set(rows)), sorted(set(rows) - set(defined))
+        raise QualityError(f"Reconciliation must cover every pg-guide rule exactly (missing {missing}, unknown {extra})")
+    for ident, row in rows.items():
+        if row["Status"] not in {"MATCH", "DEVIATION", "CONFIRM", "NOT_IMPLEMENTED"}:
+            raise QualityError(f"Unknown reconciliation status: {ident}")
+        require(row["BD source"], f"BD source {ident}")
+        require(row["BD expected"], f"BD expected {ident}")
+        if row["Status"] != "NOT_IMPLEMENTED":
+            require(row["Code location"], f"Code location {ident}")
+    findings = records(body, "Findings",
+                       ["Finding ID", "Rule ID", "Kind", "Description", "Action", "Decision / reference"], "Finding ID", True)
+    for fid, row in findings.items():
+        if not set(split_ids(row["Rule ID"])) <= set(rows):
+            raise QualityError(f"Finding references unknown rule: {fid}")
+        if row["Action"] not in {"FIX_PG", "ACCEPT", "QA", "DEFER"}:
+            raise QualityError(f"Finding action must be FIX_PG, ACCEPT, QA or DEFER: {fid}")
+        require(row["Description"], f"Finding description {fid}")
+    covered = {rid for row in findings.values() for rid in split_ids(row["Rule ID"])}
+    for ident, row in rows.items():
+        if row["Status"] != "MATCH" and ident not in covered:
+            raise QualityError(f"Non-matching rule has no finding: {ident}")
+    return rows
+
+
 def problems(dest, task, step):
     if task["kit_version"] != "0.3.0":
         return ["Unsupported quality profile; do not silently downgrade validation"]
@@ -330,18 +371,20 @@ def problems(dest, task, step):
             read(dest, "pg-implementation.md")
             manifest(dest, "pg-artifact-manifest.md")
         elif ident == "S3":
-            ut_design(dest, require_dd=False)
+            reconciliation(dest)
         elif ident == "S4":
+            ut_design(dest, require_dd=False)
+        elif ident == "S5":
             design(dest)
             review(read(dest, "review.md"))
-        elif ident == "S5":
+        elif ident == "S6":
             ut_design(dest)
             metadata(dest, "implementation.md")
             manifest(dest, "artifact-manifest.md")
             review(read(dest, "code-review.md"))
-        elif ident == "S6":
-            evidence(dest)
         elif ident == "S7":
+            evidence(dest)
+        elif ident == "S8":
             body = read(dest, "acceptance.md")
             review(body)
             checklist = table(body, "Acceptance checklist", ["Check", "Result", "Evidence / reviewer"])

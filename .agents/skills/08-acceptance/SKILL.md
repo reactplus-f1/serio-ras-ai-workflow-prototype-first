@@ -1,9 +1,9 @@
 ---
-name: 07-acceptance
-description: Review cuối S7 sau evidence S6; lập acceptance và dừng G5 cho con người nghiệm thu.
+name: 08-acceptance
+description: Review cuối S8 sau evidence S7; lập acceptance và dừng G6 cho con người nghiệm thu.
 ---
 
-# Skill 07-acceptance
+# Skill 08-acceptance
 
 ## Mục tiêu
 
@@ -11,13 +11,13 @@ Chuẩn bị bàn giao có chất lượng và quy trình AI tái hiện đượ
 
 ## Điều kiện chạy
 
-`next` chỉ định S7; S6 đủ hồ sơ; user đã xác nhận G3/G4 trong chat. Reviewer truy cập được nguồn/code/raw
+`next` chỉ định S8; S7 đủ hồ sơ; user đã xác nhận G4/G5 trong chat. Reviewer truy cập được nguồn/code/raw
 artifacts đúng phiên bản.
 
 ## Input (user đưa)
 
 Toàn bộ hồ sơ run (pg-guide/PG/Testspec/DD/UT, report/coverage/traceability/exceptions/
-manifests) và process log. Không cần user đưa thêm tài liệu.
+manifests) và log công việc `log/作業ログ.docx`. Không cần user đưa thêm tài liệu.
 
 Agent đọc: QUALITY_RULES, QUALITY_RECORDS.
 
@@ -40,7 +40,9 @@ thật; có hướng dẫn tái hiện.
 
 ## Dừng và bàn giao
 
-Báo cáo bốn mục (AGENTS.md), trình G5 và dừng. Chỉ khi user xác nhận G5 trong chat mới là nghiệm thu. Không
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+(`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
+Báo cáo bốn mục (AGENTS.md), trình G6 và dừng. Chỉ khi user xác nhận G6 trong chat mới là nghiệm thu. Không
 tự xác nhận, không merge/deploy, không Git.
 
 ## Lỗi thường gặp

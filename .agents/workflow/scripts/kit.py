@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate versioned Markdown workflows; review points G0-G5 are confirmed by the user in chat, not recorded here."""
+"""Validate versioned Markdown workflows; review points G0-G6 are confirmed by the user in chat, not recorded here."""
 import argparse
 import json
 import re
@@ -50,6 +50,8 @@ def load(task_dir):
             "kit_version": field(body, "Kit version")}
     workflow(task)
     bd = Path(task["bd_path"])
+    if not bd.is_absolute():
+        bd = task_dir / bd
     if not bd.is_file():
         raise WorkflowError("BD missing at the path recorded in task.md; stop and start a new reviewed run")
     if (task_dir / "source-manifest.md").exists():
@@ -99,6 +101,9 @@ def init(args):
     if dest.exists() and any(p.name != "inputs" for p in dest.iterdir()):
         raise WorkflowError(f"Task directory is not empty: {dest}")
     dest.mkdir(parents=True, exist_ok=True)
+    # BD inside the run is recorded relative to the run so the repo can be moved/cloned.
+    if bd.is_relative_to(dest):
+        bd = bd.relative_to(dest).as_posix()
     scope = (args.scope or "Chờ người phụ trách chốt tại G0").replace("|", "/")
     task = f"""# Task {args.function_id}
 
@@ -112,7 +117,7 @@ def init(args):
 | Scope | {scope} |
 | Ngoài scope | Chờ người phụ trách chốt tại G0 |
 | Repository / build / test | PENDING: user đưa đường dẫn repo code, branch và quyền build/test khi đến S2 |
-| Dependency thật / mock | Chờ xác nhận tại G0/G2 |
+| Dependency thật / mock | Chờ xác nhận tại G0/G3 |
 | Quality target | C1 = 100%, C2 = 100% trong phạm vi hợp lệ được người review chốt; mọi case trong kế hoạch phải PASS |
 
 ## Người phụ trách
@@ -125,8 +130,8 @@ def init(args):
 ## Ghi chú task
 
 Hồ sơ task là Markdown theo config/workflow.json. Code và artifacts ở repo code / nơi user
-chỉ định, liên kết qua manifest (đường dẫn). Điểm review G0–G5: user xác nhận trong chat; nguồn đã dùng ở
-source-manifest.md; quality-plan.md (S3) ghi phạm vi kiểm thử. Agent không thao tác Git.
+chỉ định, liên kết qua manifest (đường dẫn). Điểm review G0–G6: user xác nhận trong chat; nguồn đã dùng ở
+source-manifest.md; quality-plan.md (S4) ghi phạm vi kiểm thử. Agent không thao tác Git.
 """
     (dest / "task.md").write_text(task, encoding="utf-8")
     write_intake_records(dest, args.function_id, bd)
@@ -167,7 +172,9 @@ def check(args):
 
 
 def write_intake_records(dest, function_id, bd):
-    body = f"# Source manifest {function_id}\n\nNguồn thực sự được dùng; thêm nguồn trước G0.\n\n## Files\n\n| ID | Path | Role |\n|---|---|---|\n| BD01 | {bd} | BD chính |\n"
+    body = (f"# Source manifest {function_id}\n\nNguồn thực sự được dùng; bổ sung đủ nguồn (Category, Version) theo "
+            "templates/source-manifest.md trước G0.\n\n## Files\n\n| ID | Path | Role | Category | Version | Used in |\n"
+            f"|---|---|---|---|---|---|\n| BD01 | {bd} | BD chính | CUSTOMER | PENDING | S1 |\n")
     (dest / "source-manifest.md").write_text(body, encoding="utf-8")
 
 

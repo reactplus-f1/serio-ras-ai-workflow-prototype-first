@@ -29,7 +29,7 @@ Build/lint/test chỉ chạy khi nhiệm vụ cho phép; config có mặt chưa 
 
 Theo WORKFLOW và QUALITY_RULES. Expected từ BD/quyết định đã duyệt; reviewer độc lập kiểm
 tra expected và assertion. PG có trước DD nhưng không được đổi rule/expected. Lỗi PG mở G1,
-lỗi case mở G2, DD mở G3, UT code mở G4, nguồn/rule/giả định/kế hoạch code mở G0. Hồ sơ đã
+đối chiếu BD↔PG mở G2, lỗi case mở G3, DD mở G4, UT code mở G5, nguồn/rule/giả định/kế hoạch code mở G0. Hồ sơ đã
 chốt chỉ sửa khi user yêu cầu làm lại từ gate chịu ảnh hưởng.
 
 ## Dữ liệu, quyền và Git
