@@ -20,8 +20,8 @@ WORKFLOW-START.md               file này
     templates/                  mẫu hồ sơ Markdown trống
     scripts/                    kit.py (gate/checker), quality.py, xlsx_view.py, worklog.py
 log/
-  作業ログ.docx                 log công việc chung (mọi hoạt động)
-  作業ログ_template.docx        mẫu log
+  作業ログ.xlsx                 log công việc chung (mọi hoạt động)
+  作業ログ_template.xlsx        mẫu log
 runs/
   <Function-ID>/                hồ sơ một chức năng (task.md, pg-guide.md, QA.md, …)
     inputs/                     bản BD làm việc
@@ -33,7 +33,7 @@ READY; chờ review G1). Chức năng mới tạo `runs/<Function-ID>/` khi bắ
 
 ## Chuẩn bị
 
-- Python 3.10+ (script workflow) và `python-docx` (để ghi log Word).
+- Python 3.10+ (script workflow) và `openpyxl` (để ghi log Excel).
 - BD của chức năng dưới dạng **Excel 画面定義書 (.xlsx)** do Serio cung cấp. User ném vào
   chat; agent lưu bản làm việc vào `runs/<Function-ID>/inputs/` (task.md ghi đường dẫn
   tương đối `inputs/...`, nên repo có thể chuyển thư mục/clone lại).
@@ -52,7 +52,7 @@ Scope: chỉ chức năng chính của BR_Com_004; BR_Com_003/005 là mock.
 Agent nhận ra Function ID từ BD, lưu BD vào `runs/BR_Com_004/inputs/`, chạy `kit.py init`
 (tạo `task.md` và `source-manifest.md`), rồi làm S1 theo skill 01-pg-guide: đọc BD, lập
 rule và giả định, viết `pg-guide.md` (code gì, ở đâu, mock gì) và `QA.md` (câu hỏi nghiệp vụ
-gửi Serio, có cột 資料/シート/行 để truy vết), ghi log công việc `log/作業ログ.docx`, rồi
+gửi Serio, có cột 資料/シート/行 để truy vết), ghi log công việc `log/作業ログ.xlsx`, rồi
 dừng tại G0 với
 báo cáo: đã làm gì, thành phẩm ở đâu, gate kế tiếp, cần user đưa thêm gì. Thiếu scope thì
 agent hỏi trước khi làm. Ở S1 agent không viết code, không build/test/SQL.

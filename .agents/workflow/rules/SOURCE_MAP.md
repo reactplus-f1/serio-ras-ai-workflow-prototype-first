@@ -18,7 +18,7 @@ rule tổng hợp nào. Mỗi file nhận được lưu vào `runs/<ID>/inputs/`
 | S6 UT code | Quyền chạy test project; dữ liệu test | — | CODING_RULES, QUALITY_RULES, QUALITY_RECORDS |
 | S7 Evidence | 単体テスト実施_ルール; môi trường/DB/tool coverage; quyền chạy | — | QUALITY_RULES, QUALITY_RECORDS |
 | S8 Acceptance | — | — | QUALITY_RULES, QUALITY_RECORDS |
-| Mọi bước, hiệu chỉnh, chỉnh workflow | — | Kết quả review/test của người | WORKLOG_RULES (ghi `log/作業ログ.docx` sau mỗi hoạt động) |
+| Mọi bước, hiệu chỉnh, chỉnh workflow | — | Kết quả review/test của người | WORKLOG_RULES (ghi `log/作業ログ.xlsx` sau mỗi hoạt động) |
 
 Tài liệu đã đưa ở bước trước không cần đưa lại; agent đọc từ `runs/<ID>/inputs/` theo
 source-manifest.

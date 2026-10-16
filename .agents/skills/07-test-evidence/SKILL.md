@@ -44,7 +44,7 @@ quán; ngoại lệ có quyết định con người. Thiếu evidence → NOT V
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 S7 không có gate riêng. Báo cáo bốn mục (AGENTS.md); đạt thì chuẩn bị S8; còn FAIL/thiếu
 evidence thì báo và dừng. Không tự xác nhận, không Git.

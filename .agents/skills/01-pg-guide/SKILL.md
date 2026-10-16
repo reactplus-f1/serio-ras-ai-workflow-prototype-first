@@ -62,7 +62,7 @@ trúc tham chiếu và phần "phải hỏi user"), BR_COM_004_RULES nếu là P
    dùng. Tài liệu tổng hợp (`DERIVED`) không thay spec gốc. Hoàn thiện task.md (scope,
    người phụ trách, dependency thật/mock). Chưa lập quality-plan: chưa có code để chọn
    module/method đo C1/C2 — việc đó ở S4.
-8. Ghi log công việc vào `log/作業ログ.docx` (`worklog.py add`, `rules/WORKLOG_RULES.md`; kể cả bản đầu AI tạo, lần sửa và thử thất bại); chạy `kit.py check` đến `READY`, rồi `kit.py next`.
+8. Ghi log công việc vào `log/作業ログ.xlsx` (`worklog.py add`, `rules/WORKLOG_RULES.md`; kể cả bản đầu AI tạo, lần sửa và thử thất bại); chạy `kit.py check` đến `READY`, rồi `kit.py next`.
 
 ## Output
 
@@ -81,7 +81,7 @@ hưởng nếu sai; QA.md có câu hỏi nghiệp vụ (không xin tài liệu, 
 ## Dừng và bàn giao
 
 Báo cáo bốn mục (AGENTS.md): đã làm; thành phẩm (`runs/<ID>/pg-guide.md`, `task.md`,
-`source-manifest.md`, `QA.md`, `inputs/<BD>`; mục log L-xxx trong `log/作業ログ.docx`); gate G0 — nêu nổi
+`source-manifest.md`, `QA.md`, `inputs/<BD>`; mục log L-xxx trong `log/作業ログ.xlsx`); gate G0 — nêu nổi
 bật các giả định `A-xx` để người review chấp nhận/sửa; user xác nhận G0 trong chat rồi mới tiếp tục S2. Nêu tài liệu cần
 user đưa cho S2. Rồi dừng. Không tự xác nhận, không code, không Git.
 

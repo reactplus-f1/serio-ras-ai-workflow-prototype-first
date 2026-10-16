@@ -1,24 +1,31 @@
 # Quy tắc ghi log công việc (作業ログ)
 
 Áp dụng cho mọi phiên agent và người phụ trách. Mục đích: tái hiện và kiểm tra quy trình AI.
-Đây là nơi duy nhất ghi lịch sử/tiến độ làm việc (không có báo cáo Word riêng theo màn).
+Đây là nơi duy nhất ghi lịch sử/tiến độ làm việc (không có báo cáo riêng theo màn).
 
 ## Nơi ghi
 
-- **Một file log chung**: `log/作業ログ.docx` (root repo workflow), cho mọi ticket/chức năng và
+- **Một file log chung**: `log/作業ログ.xlsx` (root repo workflow), cho mọi ticket/chức năng và
   mọi lần chỉnh workflow. Không dùng log Markdown, không tạo log hay báo cáo riêng theo bước/run.
-- Mẫu: `log/作業ログ_template.docx`. File log gồm: 1. Nội dung cần ghi, 2. Quy tắc ghi log,
-  3. Tổng hợp (một dòng/hoạt động), 4. Chi tiết (một bảng 17 mục/hoạt động).
-- Agent ghi bằng script, không sửa tay XML Word:
+- Mẫu: `log/作業ログ_template.xlsx`. Excel hai sheet, cùng 17 cột (hàng 1 là tiêu đề:
+  ID + 17 mục bên dưới), mỗi hoạt động một dòng; ID `L-xxx` đánh số chung cho cả hai sheet:
+  - **Hiệu chỉnh workflow** (key JSON `"log": "workflow"`): chỉnh workflow, quy trình, rule,
+    skill, template, script, format log.
+  - **Tạo thành phẩm** (`"log": "output"`): tạo/hiệu chỉnh/tạo lại/thử thất bại thành phẩm của
+    bước S1–S8 (hồ sơ run, code, hướng dẫn test) và chỉnh môi trường test cho run.
+  - Một lượt có cả hai loại thì ghi hai mục; không tách được thì ghi vào sheet của phần chính. File chỉ chứa dữ liệu log; nội dung cần ghi và quy tắc nằm
+  ở file này, không chép vào Excel.
+- Agent ghi bằng script:
 
 ```powershell
 python .agents/workflow/scripts/worklog.py add --json <entry.json>   # thêm L-xxx
 python .agents/workflow/scripts/worklog.py set --id L-003 --field status --value "Thất bại"
-python .agents/workflow/scripts/worklog.py list                      # bảng tổng hợp
-python .agents/workflow/scripts/worklog.py rebuild                   # dựng lại template + log theo format hiện tại
+python .agents/workflow/scripts/worklog.py list                      # liệt kê + tổng phút
+python .agents/workflow/scripts/worklog.py template                  # dựng lại file mẫu
 ```
 
-  Người phụ trách được sửa trực tiếp trong Word (đóng Word trước khi agent chạy script).
+  Người phụ trách được sửa trực tiếp trong Excel (đóng Excel trước khi agent chạy script); không
+  đổi tên/thứ tự cột hàng 1.
   JSON truyền bằng file UTF-8 (không pipe từ PowerShell vì lỗi mã hóa tiếng Việt).
 
 ## Khi nào phải ghi
@@ -57,8 +64,8 @@ liệu thời gian đáng tin cậy.
 |---|---|---|
 | 1 | Ngày và thời gian thực hiện, bắt đầu–kết thúc (giờ +07:00) | `time` (`YYYY-MM-DD HH:MM–HH:MM`) |
 | 2 | Run ID | `run_id` (`<Function-ID>-S<n>-<yyyymmdd-HHMM>`; chỉnh workflow: `WF-<yyyymmdd-HHMM>`) |
-| 3 | Người thực hiện (người chỉ thị/review và AI thực hiện) | `people` (+ `people_short` cho Tổng hợp) |
-| 4 | Ticket hoặc nội dung công việc liên quan | `ticket` (+ `summary` ngắn cho Tổng hợp) |
+| 3 | Người thực hiện (người chỉ thị/review và AI thực hiện) | `people` |
+| 4 | Ticket hoặc nội dung công việc liên quan | `ticket` |
 | 5 | Loại hoạt động | `type`: Chạy bước (AI tạo mới) / Hiệu chỉnh / Tạo lại / Thử thất bại / Chỉnh workflow / Chỉnh repo code / môi trường |
 | 6 | Tài liệu hoặc code đầu vào (tên file đầy đủ, phiên bản/commit nếu có) | `inputs` |
 | 7 | Yêu cầu / chỉ thị gửi AI (dạng chỉ thị chuyên môn, xem trên) | `prompt` |
@@ -71,7 +78,7 @@ liệu thời gian đáng tin cậy.
 | 14 | Thời gian AI xử lý (phút) | `time_ai` |
 | 15 | Thời gian review thủ công (phút) | `time_review` |
 | 16 | Thời gian sửa lại (phút) | `time_rework` |
-| 17 | Ghi chú hoặc vấn đề phát sinh | `notes` |
+| 17 | Ghi chú hoặc vấn đề phát sinh — ngắn gọn, một ý/dòng, không lặp nội dung các mục khác | `notes` |
 
 Mục không có nội dung ghi `—`; script từ chối entry thiếu key. Mục 14–16 là số phút, hoặc
 `chờ user ghi`, hoặc `— (lý do)`; `worklog.py list` in tổng phút từng loại.
@@ -91,7 +98,10 @@ Mục không có nội dung ghi `—`; script từ chối entry thiếu key. M�
   - **Review thủ công**: thời gian người phụ trách đọc/kiểm tra/test kết quả.
   - **Sửa lại**: thời gian hiệu chỉnh sau review (người và AI) của chính hoạt động này.
   - Review/sửa lại do người phụ trách cung cấp; chưa có thì ghi `chờ user ghi`, cập nhật sau bằng
-    `worklog.py set --id L-xxx --field time_review --value <phút>` hoặc sửa trực tiếp trong Word.
+    `worklog.py set --id L-xxx --field time_review --value <phút>` hoặc sửa trực tiếp trong Excel.
   - Người thực hiện làm việc khác trong lúc chờ AI thì không tính khoảng đó vào review/sửa lại.
-- Mục ghi trước khi áp dụng tiêu chuẩn này: Run ID/lệnh/thời gian ghi `— (chưa đo)`.
+- Mục ghi trước khi áp dụng tiêu chuẩn này: Run ID/lệnh ghi `— (mục cũ…)`. Thời gian L-001–L-019
+  tái dựng từ timestamp phiên agent: AI = từ chỉ thị đến sự kiện cuối của AI; review = khoảng chờ
+  đến chỉ thị kế tiếp (>30 phút coi là rời phiên, ghi `— (rời phiên)`); sửa lại = thời gian AI
+  của các lượt hiệu chỉnh.
 - Không ghi secrets, mật khẩu, chuỗi kết nối.

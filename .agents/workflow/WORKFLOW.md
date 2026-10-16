@@ -39,7 +39,7 @@ lập (tương ứng đầu việc "tạo và review DD"). S7 không có gate ri
    bước sau").
 5. Agent kết thúc bằng báo cáo bốn mục (AGENTS.md): đã làm, thành phẩm ở đâu, gate kế tiếp,
    cần user đưa thêm.
-6. Agent ghi **log công việc** (`log/作業ログ.docx`, `rules/WORKLOG_RULES.md`) cho từng hoạt động
+6. Agent ghi **log công việc** (`log/作業ログ.xlsx`, `rules/WORKLOG_RULES.md`) cho từng hoạt động
    của lượt rồi dừng.
 7. User review; nếu đồng ý thì nhắn xác nhận/"tiếp tục" trong chat để mở lượt tiếp theo. Nếu sai, user yêu cầu làm lại từ bước/gate chịu ảnh hưởng.
 
@@ -66,9 +66,9 @@ pg-implementation/pg-manifest đã chốt tại G1; snapshot cuối ghi ở S6.
 
 Mục tiêu C1 = C2 = 100% trong phạm vi hợp lệ người review xác nhận; mọi case đã duyệt phải
 PASS. Mỗi hoạt động tạo thay đổi (chạy bước, hiệu chỉnh, tạo lại, thử thất bại, chỉnh
-workflow/skill/quy trình, chỉnh repo code/môi trường; không ghi hỏi đáp) ghi một mục vào log chung `log/作業ログ.docx` (mẫu `log/作業ログ_template.docx`) bằng
-`scripts/worklog.py`, theo `rules/WORKLOG_RULES.md`: bảng Tổng hợp + bảng Chi tiết 17 mục
+workflow/skill/quy trình, chỉnh repo code/môi trường; không ghi hỏi đáp) ghi một mục vào log chung `log/作業ログ.xlsx` (mẫu `log/作業ログ_template.xlsx`) bằng
+`scripts/worklog.py`, theo `rules/WORKLOG_RULES.md`: Excel hai sheet (Hiệu chỉnh workflow / Tạo thành phẩm S1–S8), một dòng/hoạt động, 17 mục
 (ngày giờ, Run ID, người thực hiện, ticket, loại, đầu vào, prompt, công cụ/model, lệnh đã chạy +
 exit code, kết quả ban đầu AI, phần người sửa, review/test, trạng thái, thời gian AI xử lý /
 review thủ công / sửa lại tách riêng, ghi chú) — đủ để chạy lại và tổng kết PoC. Đây là nơi duy nhất ghi tiến độ/lịch sử
-làm việc; không có báo cáo Word riêng theo màn. Mục đích: tái hiện quy trình AI.
+làm việc; không có báo cáo riêng theo màn. Mục đích: tái hiện quy trình AI.

@@ -56,7 +56,7 @@ mọi Rule không `MATCH` có Finding với Action; kết luận dựa trên tà
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G2: người review xác nhận từng `DEVIATION`/`CONFIRM`
 (sửa, chấp nhận hay hỏi Serio) trong chat rồi mới sang S4. Không tự xác nhận, không Git.

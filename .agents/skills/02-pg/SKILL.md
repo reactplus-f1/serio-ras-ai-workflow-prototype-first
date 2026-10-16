@@ -42,7 +42,7 @@ BR_COM_004_RULES nếu PoC. Config/code thật của module trong repo user đư
    user commit. Code commit là tùy chọn, không dùng để khóa S2; chỉ ghi SHA nếu user cung cấp.
    Không bịa commit. Bổ sung vào source-manifest.md mọi nguồn dùng ở S2 (API一覧, テーブル設計書,
    repo source/DDL kèm commit) với Category/Version.
-7. Ghi log công việc vào `log/作業ログ.docx` (`worklog.py add`, `rules/WORKLOG_RULES.md`; kể cả bản đầu AI tạo, lần sửa và thử thất bại); `kit.py check` đến `READY`.
+7. Ghi log công việc vào `log/作業ログ.xlsx` (`worklog.py add`, `rules/WORKLOG_RULES.md`; kể cả bản đầu AI tạo, lần sửa và thử thất bại); `kit.py check` đến `READY`.
 
 ## Output
 
@@ -58,7 +58,7 @@ nghiệp vụ.
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G1 và dừng: danh sách file để user commit và review.
 User thấy code sai → yêu cầu làm lại từ G1 trong chat.

@@ -17,7 +17,7 @@ artifacts đúng phiên bản.
 ## Input (user đưa)
 
 Toàn bộ hồ sơ run (pg-guide/PG/Testspec/DD/UT, report/coverage/traceability/exceptions/
-manifests) và log công việc `log/作業ログ.docx`. Không cần user đưa thêm tài liệu.
+manifests) và log công việc `log/作業ログ.xlsx`. Không cần user đưa thêm tài liệu.
 
 Agent đọc: QUALITY_RULES, QUALITY_RECORDS.
 
@@ -40,7 +40,7 @@ thật; có hướng dẫn tái hiện.
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G6 và dừng. Chỉ khi user xác nhận G6 trong chat mới là nghiệm thu. Không
 tự xác nhận, không merge/deploy, không Git.

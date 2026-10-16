@@ -39,7 +39,7 @@ DD tiếng Nhật, nguồn đầy đủ, IDs và mapping giữ nguyên; review k
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G4 (review DD) và dừng. Chỉ khi user xác nhận G4 trong chat thì DD mới chốt;
 S6 bắt đầu sau đó. Không tự xác nhận, không Git.

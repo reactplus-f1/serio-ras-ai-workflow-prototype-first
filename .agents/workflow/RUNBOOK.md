@@ -42,17 +42,17 @@ python .agents/workflow/scripts/xlsx_view.py "<BD.xlsx>" --sheet イベント定
 shape ngoài ô hay ghi chú vùng merge; sheet tên `(非表示)…` vẫn được liệt kê. Phần layout
 và shape phải xem bằng Excel; agent ghi giới hạn này vào `pg-guide.md` (mục "Sheet đã đọc và giới hạn").
 
-## Log công việc Word
+## Log công việc Excel
 
 ```powershell
-python .agents/workflow/scripts/worklog.py add --json entry.json     # thêm L-xxx vào log/作業ログ.docx
+python .agents/workflow/scripts/worklog.py add --json entry.json     # thêm L-xxx vào log/作業ログ.xlsx
 python .agents/workflow/scripts/worklog.py set --id L-003 --field status --value "Thất bại"
 python .agents/workflow/scripts/worklog.py list                    # bảng tổng hợp
-python .agents/workflow/scripts/worklog.py rebuild                 # dựng lại template + log theo format hiện tại
+python .agents/workflow/scripts/worklog.py template                # dựng lại file mẫu Excel
 ```
 
 Ghi sau mỗi hoạt động (`rules/WORKLOG_RULES.md`: 17 mục, key JSON, quy tắc ghi log). Người
-phụ trách có thể sửa trực tiếp trong Word (đóng Word trước khi chạy script). Cần `pip install python-docx`.
+phụ trách có thể sửa trực tiếp trong Excel (đóng Excel trước khi chạy script). Cần `pip install openpyxl`.
 
 ## Git
 

@@ -50,7 +50,7 @@ Kế hoạch chưa chứng minh coverage chạy.
 
 ## Dừng và bàn giao
 
-Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.docx`
+Trước khi báo cáo: ghi log công việc cho từng hoạt động của lượt vào `log/作業ログ.xlsx`
 (`worklog.py add`, `rules/WORKLOG_RULES.md`) và nêu ID log trong mục Thành phẩm.
 Báo cáo bốn mục (AGENTS.md), trình G3 và dừng; nêu tài liệu cần cho S5 (mẫu DD/API定義書
 nếu Serio có). Không tự xác nhận, không Git.

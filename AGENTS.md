@@ -45,10 +45,10 @@ Mỗi lượt kết thúc bằng bốn mục, đúng thứ tự:
 
 Sau **mỗi hoạt động tạo thay đổi** — chạy bước, hiệu chỉnh, tạo lại, thử thất bại, chỉnh
 workflow/quy trình/rule/skill/script, chỉnh repo code/môi trường — agent ghi một mục vào log
-chung `log/作業ログ.docx` bằng `worklog.py add` theo `rules/WORKLOG_RULES.md` (17 mục: có Run ID, lệnh + exit code, thời gian AI/review/sửa lại;
+chung `log/作業ログ.xlsx` bằng `worklog.py add` theo `rules/WORKLOG_RULES.md` (17 mục: có Run ID, lệnh + exit code, thời gian AI/review/sửa lại;
 quy tắc ghi log), trước báo cáo cuối lượt. Hỏi đáp/giải thích trong chat không ghi log. Mục 7
 ghi dạng chỉ thị chuyên môn, không chép lời chat. Không dùng log Markdown, không tạo báo cáo
-Word riêng theo màn. Mục **Thành phẩm** của
+riêng theo màn. Mục **Thành phẩm** của
 báo cáo cuối lượt nêu ID log vừa ghi.
 
 ## Vận hành
