@@ -5,7 +5,7 @@
 - **BD do Serio cung cấp là đầu vào**, dưới dạng Excel 画面定義書. User đưa file cho agent
   ở S1; `kit.py init` ghi đường dẫn BD vào task.md và mọi lệnh sau đó kiểm tra file còn tồn tại. BD đổi
   → run dừng, review lại từ G0.
-- Các tài liệu khác (API一覧, テーブル設計書, PG_ルール, 画面共通仕様説明書, UT rule,
+- Các tài liệu khác (API一覧, テーブル設計書, PG_ルール, コーディング規約, 画面共通仕様説明書, UT rule,
   メッセージ一覧, mẫu DD/UT…) **do user đưa khi bước đó cần** (SOURCE_MAP). Agent không tự
   tìm trên máy, không dùng đường dẫn ghi sẵn, không coi rule tổng hợp trong `.agents` là
   thay cho tài liệu gốc khi cần xác nhận một ô cụ thể.

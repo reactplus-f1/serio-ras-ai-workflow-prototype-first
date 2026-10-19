@@ -11,7 +11,9 @@ hợp. Khi cần xác nhận một ô, yêu cầu user đưa workbook.
   DTO/Result. Domain: nghiệp vụ/interface. Infrastructure: EF/Repository/adapter. Tái dùng
   layer/shared code hiện có; không đưa DB logic vào UI.
 - Thứ tự PG API (開発手順書): entity → DbContext → repository interface/implementation →
-  UseCase DTO/service → Controller → DI/mapping/validation. Tên lớp/schema/endpoint theo
+  UseCase ViewModel/service → API Request/Response (RasApi/ViewModels) → AutoMapper Profile
+  theo nghiệp vụ (RasApi/Mapper) → Controller → DI. Controller không trả thẳng ViewModel của
+  UseCase. Chi tiết vị trí/tên: CODING_RULES "PG_ルール 開発手順書". Tên lớp/schema/endpoint theo
   BD/API一覧 và repo thật; không lấy tên mẫu (MeetingRoom/Employee/FeatureA) làm quy định.
 - Mỗi thao tác ghi là một transaction, boundary tại UseCase (9.データアクセス設計方針!C30:C31).
   Giữ audit fields và mapping đã chốt; không bật concurrency mọi bảng chỉ từ ví dụ.
@@ -40,4 +42,6 @@ hợp. Khi cần xác nhận một ô, yêu cầu user đưa workbook.
 - Mock màn lỗi phải nhận status code và hành vi theo BR_Com_005; redirect sample hiện có
   không phải specification và không là expected UT.
 - Frontend feature service dùng shared API adapter/messages/validators; không nhân bản
-  HTTP/auth/message logic vào từng component.
+  HTTP/auth/message logic vào từng component. Theo 開発手順書 (Angular): service gọi API đặt ở
+  `shared/services`, Request/Response interface ở `shared/interfaces`, label/message ở
+  `assets/i18n/ja.json`.

@@ -21,11 +21,14 @@ Không cần DD/Testspec ở bước này.
 
 - **Bắt buộc**: repo code + branch; quyền build/lint; API一覧, テーブル設計書 (nếu chưa đưa ở
   S1). Xác nhận cấu trúc thật theo REPOSITORY_RULES và ghi vào task.md.
-- **Nếu có**: PG_ルール, APアーキテクチャ設計.
+- **Nếu có**: `【RAS】コーディング規約.xlsx`, `【RAS】PG_ルール.xlsx`, APアーキテクチャ設計.
+  Nhận được → lưu `runs/<ID>/inputs/`, ghi source-manifest (CUSTOMER, version). Thiếu → convention
+  chỉ dựa trên CODING_RULES + config repo, nêu giới hạn trong pg-implementation.
 - Từ run: `pg-guide.md` đã được user xác nhận ở G0 (kể cả giả định `A-xx` đã được chấp nhận/sửa).
 
-Agent đọc: CODING_RULES, ARCHITECTURE_RULES, REPOSITORY_RULES; UI_RULES nếu frontend;
-BR_COM_004_RULES nếu PoC. Config/code thật của module trong repo user đưa.
+Agent đọc: CODING_RULES (tổng hợp コーディング規約 F*/B* và PG_ルール 開発手順書), ARCHITECTURE_RULES,
+REPOSITORY_RULES; UI_RULES nếu frontend; BR_COM_004_RULES nếu PoC. Config/code thật của module
+trong repo user đưa.
 
 ## Thực hiện
 
@@ -37,6 +40,11 @@ BR_COM_004_RULES nếu PoC. Config/code thật của module trong repo user đư
    khi code → ghi giả định mới `A-xx` trong pg-implementation (mục "Giả định phát sinh"),
    không dừng.
 4. Build/lint khi được phép, ghi kết quả thật; không deploy, không chạy SQL seed.
+   Kiểm tra convention trên file đã sửa theo CODING_RULES ("Kiểm tra convention trên file đã
+   sửa": dotnet format verify, prettier check, tsc, eslint, EOL/encoding), rồi tick "Checklist
+   review thủ công" (コーディング規約/開発手順書). Sửa vi phạm do PG tạo; vi phạm có sẵn trên base
+   chỉ ghi lại, không sửa. Lệch cấu trúc với 開発手順書 (vị trí folder, tầng ViewModel, Mapper)
+   mà repo hiện tại không theo → ghi lệch và hỏi user, không tự refactor lớn.
 5. Kiểm kê branch/atomic condition thực tế trong code cho S3 (đối chiếu) và S4 (Testspec).
 6. Lập pg-artifact-manifest liệt kê từng file đã sửa. **Không commit**: liệt kê file để
    user commit. Code commit là tùy chọn, không dùng để khóa S2; chỉ ghi SHA nếu user cung cấp.
@@ -53,8 +61,8 @@ BR_COM_004_RULES nếu PoC. Config/code thật của module trong repo user đư
 ## Kiểm tra hoàn thành
 
 Mọi dòng kế hoạch code có trạng thái (xong / lệch / không làm + lý do); mapping Rule→file;
-build/lint kết quả thật; real/mock rõ; danh sách file đầy đủ. PASS lint không chứng minh
-nghiệp vụ.
+build/lint kết quả thật; convention check không còn vi phạm do PG tạo (vi phạm có sẵn được
+liệt kê); real/mock rõ; danh sách file đầy đủ. PASS lint không chứng minh nghiệp vụ.
 
 ## Dừng và bàn giao
 
@@ -68,4 +76,5 @@ G1 không cho phép merge/push/deploy. Không tự xác nhận, không Git.
 
 Code ngoài kế hoạch đã duyệt mà không ghi lệch; chờ DD mới bắt đầu; tự tìm repo trên máy;
 viết full related features thay mock; tắt lint; tự commit hoặc bịa commit; sửa pg-guide đã
-duyệt.
+duyệt; bỏ qua convention check (EOL lẫn LF/CRLF, using thừa, dòng >100 ký tự); format lại
+toàn file cũ.

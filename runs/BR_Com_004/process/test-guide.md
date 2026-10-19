@@ -5,7 +5,7 @@ DB、バックエンド、フロントエンドの構築・起動方法は `seri
 ## 1. 準備
 
 1. `serio-ras/README.md` に従い、PostgreSQL、RasApi、ras-web を起動します。毎回の SQL 再実行は不要です。初期データからテストする場合に限り、**デモ用 DB** に `ras_tables.sql` を再投入します。この SQL は対象テーブルを DROP して再作成します。
-2. `Administrator` ロールを持つアカウントで `http://localhost:4200/BRCom004` を開きます。権限エラーの確認には、同ロールを持たない別アカウントが必要です。
+2. `Administrator` ロールを持つアカウントで `http://localhost:4200/BrCom004` を開きます。権限エラーの確認には、同ロールを持たない別アカウントが必要です。
 3. `https://localhost:5101/swagger` で API_004 `GET /private/tablet-info/{roomId}`、API_005 `POST /private/tablet-info`、API_008 `POST /private/rooms-mst-list` を確認します。
 
 `ras-system/sql/ras_tables.sql` の主な初期データ：
@@ -22,7 +22,7 @@ A/B/C は検証用に作成した会議室名であり、画面に固定され�
 
 | No. | 操作 | 期待結果 | 関連ルール |
 |---|---|---|---|
-| 1 | `Administrator` 以外のアカウントで `/BRCom004` を開く | `/error/403` に遷移する。BR_Com_005 はモック。 | R-001, R-025 |
+| 1 | `Administrator` 以外のアカウントで `/BrCom004` を開く | `/error/403` に遷移する。BR_Com_005 はモック。 | R-001, R-025 |
 | 2 | 管理者で開く | 設置会議室の初期値は「未選択」。API_008 の A/B/C が名前順で表示され、端末IDは入力不可、延長候補は読み取り専用、登録ボタンと検索アイコンは非表示。 | R-002–R-005 |
 | 3 | A会議室を選択 | 端末IDは `TAB-A-001`、延長候補の表示は `B会議室;C会議室`。登録ボタンと検索アイコンが表示される。 | R-006–R-009 |
 | 4 | C会議室を選択 | タブレット未登録のため端末IDと延長候補は空欄。端末IDは入力可能。 | R-006, D-6 |
