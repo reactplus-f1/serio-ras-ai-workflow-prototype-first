@@ -39,6 +39,11 @@ trong repo user đưa.
    common API/auth/messages/validators; mock đúng contract đã ghi. Phát hiện BD/guide thiếu
    khi code → ghi giả định mới `A-xx` trong pg-implementation (mục "Giả định phát sinh"),
    không dừng.
+3a. **UI theo Layout spec** (frontend): màu, kích thước, vị trí, icon, state lấy từ mục
+   "Layout spec" của pg-guide (và ảnh `inputs/layout/`), không lấy theme repo/màn sample làm
+   mặc định. Tái dùng shared component nhưng chỉnh style ở CSS của màn; sửa theme/shell chung
+   chỉ khi user đồng ý. Phần không theo ảnh → ghi deviation. Sau build, chụp màn (app thật hoặc
+   harness tĩnh dùng CSS thật) và so cạnh ảnh BD từng state; ghi kết quả vào pg-implementation.
 4. Build/lint khi được phép, ghi kết quả thật; không deploy, không chạy SQL seed.
    Kiểm tra convention trên file đã sửa theo CODING_RULES ("Kiểm tra convention trên file đã
    sửa": dotnet format verify, prettier check, tsc, eslint, EOL/encoding), rồi tick "Checklist

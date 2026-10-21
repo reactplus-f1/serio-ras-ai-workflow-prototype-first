@@ -37,6 +37,7 @@ Không có Test commit tại G1 vì Testspec và UT code là công đoạn sau. 
 | P-18 | `RasApi/Infrastructure/Authorization/AuthorizationPolicySetup.cs` (đăng ký policy `AdministratorOnly`, `InternalUserOrAdministrator`), `Shared/Constants/AppRoles.cs` (`InternalUser`), `Shared/Constants/AuthorizationPolicies.cs`, `Startup.cs` (`AddAuthorization(AuthorizationPolicySetup.Configure)`) | R-025 | API一覧 G16:H16; A-20; review 2.4 | Sửa shared auth: tách đăng ký policy khỏi Startup để test dùng chung. User đã login nhưng không có role `InternalUser`/`Administrator` → API_008 trả 403 (trước: 200) |
 | P-19 | `RasApi.ComponentTests/Authorization/ApiRoleAuthorizationTests.cs` (13 test) | R-025, C-014 | review 2.4 | Test phân quyền theo yêu cầu review (sớm hơn S6): chưa đăng nhập → Challenge (401); đăng nhập không role / role khác → Forbid (403); role được phép → thành công; handler trả 403 chung. Case chính thức vẫn lập ở S4 |
 | P-20 | `RasApi/Mapper/TabletInfoProfile.cs` (Output→Response, `SaveTabletInfoRequest`→`SaveTabletInfoInput` với `Guid.Parse`); `RasApi.ComponentTests/Mapper/TabletInfoProfileTests.cs` (3 test) | R-017, R-027 | PG_ルール 開発手順書（API） 8. Mapper実装 | Mới; Profile tự đăng ký qua `AddAutoMapper(...AddMaps)` có sẵn trong Startup |
+| P-21 | `features/br-com-004/components/br-com-004.component.{html,css}` | R-028, F-01…F-05 | pg-guide 2a Layout spec (image3) | Restyle theo ảnh BD chỉ trong component: panel tiêu đề/nội dung vuông trên nền #D9D9D9, bảng kẻ ngang đen, label #156082 rộng 209px, select 354px, input 724px, readonly/disabled #D9D9D9, nút 登録 xám viền #7F7F7F canh phải (giữ vùng khi ẩn), icon 虫眼鏡 SVG nét đen 23px. Đối chiếu: harness tĩnh dùng CSS thật + Edge headless, so cạnh image3 cả 2 state → khớp vị trí/màu/độ dài |
 ### Deviations / assumptions mới ở S2
 
 | ID | Nội dung | Lý do | Ảnh hưởng |
@@ -52,6 +53,7 @@ Không có Test commit tại G1 vì Testspec và UT code là công đoạn sau. 
 | A-20 | Role 社内ユーザ map tới app role `InternalUser` | Repo chỉ có `Administrator`; API一覧 API_008 cho 社内ユーザ + システム管理者; QA No.15 | Đổi hằng `AppRoles.InternalUser` khi Serio trả lời |
 | D-8 | AdminGuard/ApiErrorHandlerService chuyển tới `/error/{status}` cho **mọi** status (không chỉ 403) | Thay thế TODO có sẵn, một đích cho mock BR_Com_005 | Hành vi màn sample khi lỗi API thay đổi (trước: về /sample) |
 | D-9 | Route mock BR_Com_005 giữ `error/:statusCode` (không theo dạng `BrCom005`) | Contract D-02 đã dùng ở `admin.guard`/`api-error-handler`; BR_Com_005 thật sẽ quyết định route | Đổi đồng thời guard/handler khi có BR_Com_005 |
+| D-10 | Shell chung (menu trái gradient #0f4c74 bo góc, logo, nền ngoài) giữ theo theme repo, khác ảnh BD (#156082 vuông, vạch ngăn trắng) | User quyết định chỉ sửa component BR_Com_004, không đổi theme/shell chung | Đổi shell theo BD ảnh hưởng mọi màn → cần quyết định riêng |
 
 ## Tuân thủ コーディング規約 / PG_ルール (2026-10-19)
 

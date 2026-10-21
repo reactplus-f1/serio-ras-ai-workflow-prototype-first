@@ -36,8 +36,14 @@ trúc tham chiếu và phần "phải hỏi user"), BR_COM_004_RULES nếu là P
 1. Xác nhận Function ID, tên chức năng, version/ngày (改訂履歴) và đường dẫn BD khớp task.md.
 2. Liệt kê sheet bằng `xlsx_view.py --list`; đọc từng sheet nghiệp vụ (機能概要, 項目定義,
    イベント定義, 画面遷移定義, 画面表示定義, データアクセス定義, エラーチェック一覧,
-   機能間引数定義, các sheet `(非表示)`). Ghi **giới hạn**: layout dạng ảnh và text shape
-   ngoài ô không đọc được bằng script; nói rõ phần nào cần người xem Excel.
+   機能間引数定義, các sheet `(非表示)`).
+2a. **Layout (bắt buộc)**: chạy `xlsx_media.py "<BD>" --out runs/<ID>/inputs/layout` (ảnh
+   EMF → PNG, kèm text shape theo sheet), rồi **xem từng ảnh** của sheet レイアウト và
+   `(非表示)画面レイアウト`/`(非表示)レイアウト部品`. Ghi mục "Layout spec" của pg-guide: mỗi
+   vùng/item có vị trí, kích thước px (ghi tỉ lệ đo), màu nền/viền/chữ (mã hex), icon, state
+   theo từng ảnh (初期表示, 選択時…), nguồn ảnh. **Không suy đoán** từ theme repo hay màn
+   sample; chi tiết ảnh không thể hiện → ghi `—`. Ảnh convert lỗi/không đọc được → hỏi user
+   ảnh chụp trong chat, ghi `PENDING` (không đưa vào QA.md).
 3. Viết `pg-guide.md` theo template, theo thứ tự: BD và phạm vi → sheet đã đọc → luồng event
    → field/validation/state → nhánh lỗi → dữ liệu/API → phụ thuộc/mock → Giả định → Rules →
    Atomic conditions → **Kế hoạch code** → Tài liệu cần cho bước sau. Mỗi dòng có
@@ -48,7 +54,7 @@ trúc tham chiếu và phần "phải hỏi user"), BR_COM_004_RULES nếu là P
    (資料 = tên file nguồn đầy đủ kèm phần mở rộng, không dùng mã viết tắt như BD01; 行 = số dòng Excel thật,
    kèm ô và tên mục/No. trong ngoặc, đã đối chiếu bằng `xlsx_view.py` để truy vết được), câu hỏi bằng tiếng
    Nhật để gửi Serio. **Chỉ hỏi nghiệp vụ** (hành vi màn hình, luồng đăng ký, dữ liệu nghiệp
-   vụ, quyền sử dụng). **Không** hỏi: xin tài liệu (API一覧, テーブル設計書, ảnh layout, 引数定義,
+   vụ, quyền sử dụng). **Không** hỏi trong QA.md: xin tài liệu (API一覧, テーブル設計書, ảnh layout, 引数定義,
    người phụ trách), môi trường/tài khoản test, hay chi tiết kỹ thuật hiện thực (endpoint,
    tên bảng, kiểu dữ liệu, HTTP status, transaction) — những thứ đó agent tự quyết theo rules
    và ghi `A-xx` trong pg-guide. Không ghi A-ID, 暫定案, trạng thái hay bản dịch vào QA.md;
@@ -75,7 +81,7 @@ trúc tham chiếu và phần "phải hỏi user"), BR_COM_004_RULES nếu là P
 
 ID/đường dẫn BD/scope đúng; mọi Rule có Source và Required YES/NO; atomic condition trỏ Rule tồn
 tại; Kế hoạch code không rỗng và chỉ trỏ Rule tồn tại; mọi giả định có dòng `A-xx` với ảnh
-hưởng nếu sai; QA.md có câu hỏi nghiệp vụ (không xin tài liệu, không hỏi kỹ thuật); giới hạn đọc layout được ghi; tài liệu cần cho S2 (repo, API一覧,
+hưởng nếu sai; QA.md có câu hỏi nghiệp vụ (không xin tài liệu, không hỏi kỹ thuật); Layout spec đủ mọi item của 項目定義 và vùng shell, mỗi dòng có nguồn ảnh (hoặc `PENDING`); tài liệu cần cho S2 (repo, API一覧,
 テーブル設計書) được liệt kê. `READY` chưa là xác nhận của user.
 
 ## Dừng và bàn giao

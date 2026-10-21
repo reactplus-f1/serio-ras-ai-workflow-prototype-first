@@ -11,6 +11,10 @@ thuộc web, không phát triển ứng dụng tablet WinUI chỉ vì tên có t
   và shared validators. Feature ở `features/<screen-id>` (vd `br-com-004`), route `BrCom004`,
   API service ở `shared/services`, Request/Response ở `shared/interfaces`, label/message ở
   `assets/i18n/ja.json` (PG_ルール 開発手順書 (Angular); chi tiết CODING_RULES). Màn sample chỉ là minh họa.
+- Hình thức hiển thị (màu, kích thước/độ dài ô, vị trí, icon, state disable/readonly) theo
+  ảnh レイアウト của BD (mục "Layout spec" pg-guide), ưu tiên hơn theme repo và màn sample.
+  Chỉnh ở CSS của màn (`:host`/`::ng-deep` trên shared component); theme/shell chung
+  (`styles.css`, `app-shell-layout`) chỉ đổi khi user đồng ý — nếu giữ, ghi deviation.
 - Dropdown lấy giá trị từ danh sách, không gõ tự do. Search icon mở màn/chức năng tìm kiếm.
 - Bảng search mặc định tối đa 10 dòng/trang; text canh trái, number canh phải, date và control
   canh giữa. Phân trang theo scope màn, không áp cho mọi màn.

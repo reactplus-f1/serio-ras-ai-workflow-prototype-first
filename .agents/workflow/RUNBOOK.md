@@ -38,9 +38,16 @@ python .agents/workflow/scripts/xlsx_view.py "<BD.xlsx>" --list
 python .agents/workflow/scripts/xlsx_view.py "<BD.xlsx>" --sheet イベント定義
 ```
 
-`xlsx_view.py` chỉ in **giá trị ô** (sheetData). Nó **không** đọc ảnh layout (EMF), text
-shape ngoài ô hay ghi chú vùng merge; sheet tên `(非表示)…` vẫn được liệt kê. Phần layout
-và shape phải xem bằng Excel; agent ghi giới hạn này vào `pg-guide.md` (mục "Sheet đã đọc và giới hạn").
+`xlsx_view.py` chỉ in **giá trị ô** (sheetData); sheet tên `(非表示)…` vẫn được liệt kê.
+Ảnh layout (EMF) và text shape đọc bằng `xlsx_media.py`:
+
+```powershell
+python .agents/workflow/scripts/xlsx_media.py "<BD.xlsx>" --out runs/<ID>/inputs/layout
+```
+
+Script in theo sheet: `IMAGE <ô neo>: <png>` và `SHAPE <ô neo>: <text>`; EMF/WMF được convert
+sang PNG (Pillow trên Windows, fallback PowerShell System.Drawing). Agent **xem ảnh PNG** và
+ghi mục "Layout spec" trong `pg-guide.md`. Exit code 2 = có ảnh convert lỗi → hỏi user ảnh chụp.
 
 ## Log công việc Excel
 

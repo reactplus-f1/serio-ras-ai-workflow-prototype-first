@@ -18,7 +18,7 @@ WORKFLOW-START.md               file này
     config/workflow.json        step → skill → output → gate
     rules/                      quy định RAS đã tổng hợp từ tài liệu Serio
     templates/                  mẫu hồ sơ Markdown trống
-    scripts/                    kit.py (gate/checker), quality.py, xlsx_view.py, worklog.py
+    scripts/                    kit.py (gate/checker), quality.py, xlsx_view.py, xlsx_media.py (ảnh layout), worklog.py
 log/
   作業ログ.xlsx                 log công việc chung (mọi hoạt động)
   作業ログ_template.xlsx        mẫu log

@@ -14,8 +14,16 @@ cả phân tích lẫn kế hoạch code.
 | Sheet | Đọc bằng | Nội dung chính | Giới hạn |
 |---|---|---|---|
 
-Ghi rõ: layout dạng ảnh, text shape ngoài ô, merged cell, sheet `(非表示)` — cái nào script
-không đọc được và cần người xem Excel.
+Ảnh layout và text shape đọc bằng `xlsx_media.py` (ảnh EMF → PNG rồi agent xem ảnh). Chỉ ghi
+giới hạn cho phần **thực sự** không đọc được (ảnh convert lỗi, merged cell…) và trạng thái PENDING.
+
+## 2a. Layout spec (từ ảnh レイアウト)
+
+Đo trên ảnh `inputs/layout/<image>.png` (ghi tỉ lệ ảnh → px). Không có trong ảnh → ghi `—`,
+không lấy theme repo thay thế. Ảnh không đọc được → `PENDING` và hỏi user ảnh chụp.
+
+| Vùng / item | Vị trí | Kích thước (px) | Màu nền / viền / chữ | Icon / hình dạng | State theo ảnh | Nguồn ảnh |
+|---|---|---|---|---|---|---|
 
 ## 3. Luồng chính theo event
 

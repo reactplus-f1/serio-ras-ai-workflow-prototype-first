@@ -37,7 +37,7 @@ source-manifest (`CUSTOMER`) để lấy expected — không lấy expected từ
    Không chép lại từ pg-implementation mà không mở code.
 3. Kiểm riêng các mục dễ sót: quyền/role từng API theo API一覧 (policy thật, không chỉ
    `[Authorize]`), validation, message ID/literal, transaction, mock contract, DB constraint
-   theo テーブル設計書.
+   theo テーブル設計書, UI so với "Layout spec" (ảnh chụp màn cạnh ảnh BD từng state).
 4. Mỗi Rule không `MATCH` → một Finding: mô tả lệch, Action `FIX_PG` / `ACCEPT` / `QA` /
    `DEFER`. `FIX_PG` thì sửa code theo chỉ thị user, cập nhật pg-implementation (mục Deviations
    / thay đổi sau G1), build/test, và nêu rõ G1 được mở lại. `QA` thì thêm câu hỏi vào QA.md.

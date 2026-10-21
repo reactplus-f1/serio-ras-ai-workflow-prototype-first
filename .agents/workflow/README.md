@@ -19,7 +19,7 @@ bước**. Không có đường dẫn nguồn cố định: tài liệu nào đ�
 | rules/WORKLOG_RULES.md | Log công việc Excel: khi nào ghi, 17 mục (Run ID, lệnh + exit code, thời gian tách riêng), quy tắc ghi log |
 | ../skills/ | 8 skill công đoạn (01-pg-guide … 08-acceptance) và git-workflow (chỉ đọc) |
 | templates/ | Mẫu hồ sơ Markdown |
-| scripts/ | kit.py, quality.py, xlsx_view.py, worklog.py (log công việc) |
+| scripts/ | kit.py, quality.py, xlsx_view.py, xlsx_media.py (ảnh layout), worklog.py (log công việc) |
 | ../../log/ | `作業ログ.xlsx` (log chung mọi hoạt động) và `作業ログ_template.xlsx` |
 | RUNBOOK.md, START_CHAT.md | Vận hành và mở phiên |
 

@@ -10,6 +10,8 @@ hợp/kết luận tự suy ra — không dùng thay spec gốc. Ngày Excel quy
 | ID | Path | Role | Category | Version | Used in |
 |---|---|---|---|---|---|
 | BD01 | inputs/【RAS】(BR_Com_004)会議室タブレット登録_画面定義書.xlsx | BD chính (画面定義書 BR_Com_004), toàn bộ sheet | CUSTOMER | Ver 1.01, 更新日 2026/07/31 (改訂履歴 C8) | S1, S2, S3 |
+| LAY01 | inputs/layout/image3.png | Ảnh レイアウト (初期表示/会議室選択時), trích bằng `xlsx_media.py` từ BD01 → pg-guide 2a Layout spec | DERIVED | Từ BD01 Ver 1.01 (EMF → PNG ×2) | S1 (bổ sung 2026-10-20), S2, S3 |
+| LAY02 | inputs/layout/image9.png | Icon 虫眼鏡 ((非表示)レイアウト部品 I11), trích bằng `xlsx_media.py` từ BD01 | DERIVED | Từ BD01 Ver 1.01 | S1 (bổ sung 2026-10-20), S2 |
 | API01 | D:\Serio-AI\ras-docs\inputs\serio\【RAS】API一覧.xlsx | Endpoint, method, 利用可能ロール của API_004/005/008 (sheet API一覧 B5:K16) | CUSTOMER | Ver 1.02, 更新日 2026/07/30 (改訂履歴 C9); ras-docs commit c273973 | S2, S3 (S1 chỉ qua RULES01) |
 | TBL01 | D:\Serio-AI\ras-docs\inputs\serio\【RAS】テーブル設計書.xlsx | Định nghĩa 会議室マスタ / タブレット管理マスタ / タブレット延長候補会議室マスタ | CUSTOMER | Ver 1.01, 更新日 2026/07/30 (改訂履歴 C8); ras-docs commit c273973 | S2, S3 (S1 chỉ qua RULES01) |
 | CODE01 | inputs/【RAS】コーディング規約.xlsx | Coding convention Angular (F1–F9) và C# (B1–B9) | CUSTOMER | Ver 1.00, 更新日 2026/06/29 (表紙/改訂履歴) | S2, S3 |

@@ -27,16 +27,35 @@ Tên chức năng ở 表紙 ghi `(BR_Com004)` (không có gạch dưới) nhưn
 | 改訂履歴 | xlsx_view | Ver 1.00 / 1.01, ngày, người, lý do sửa | Ngày là serial Excel (46099, 46234) → quy đổi 2026/03/18, 2026/07/31 |
 | 機能概要 | xlsx_view | Mục đích, người dùng システム管理者, tiền đề なし, chạy khi cài tablet lần đầu, business flow liên quan | — |
 | 機能間引数定義 | xlsx_view | IN: không (menu link); OUT: không | — |
-| レイアウト | xlsx_view | Chỉ có tiêu đề ô B3 | **Layout là ảnh/shape — script không đọc được; cần người xem Excel** |
+| レイアウト | xlsx_view + xlsx_media | Ô B3 tiêu đề; ảnh `image3.emf` (初期表示 + 会議室選択時) → `inputs/layout/image3.png` | Đã xem ảnh (bổ sung 2026-10-20, xem 2a) |
 | 項目定義 | xlsx_view | 5 item: 登録 button, 設置会議室 dropdown, タブレット端末ID textbox, 延長候補会議室 textbox (OUT), 延長候補会議室 search icon | Không có 桁数/型 cho textbox (đều `--`) |
 | イベント定義 | xlsx_view | 4 event với 処理詳細 1-1 … 4-5 | — |
 | 画面遷移定義 | xlsx_view | 遷移 001 → 会議室検索 với 2 tham số | — |
 | 画面表示定義 | xlsx_view | 表示 001 (sau SELECT_002), 002 (sau child search) | — |
 | データアクセス定義 | xlsx_view | SELECT_001, SELECT_002, INSERT_001, INSERT_002, UPDATE_001, DELETE_001 | — |
 | エラーチェック一覧 | xlsx_view | No.1 権限 (403), No.2 登録確認 (警告), No.3 タブレット端末ID存在チェック | — |
-| (非表示)画面レイアウト | xlsx_view | Text của mock-up: menu trái (一括予約, 一括予約一覧, 会議出席者空き予約, 会議室タブレット登録), tiêu đề, 3 label, ログインユーザ名 | Chỉ đọc được text trong ô; vị trí/hiển thị nút không đọc được |
-| (非表示)レイアウト部品 | xlsx_view | Danh sách loại component | Tham khảo |
+| (非表示)画面レイアウト | xlsx_view + xlsx_media | Text của mock-up: menu trái (一括予約, 一括予約一覧, 会議出席者空き予約, 会議室タブレット登録), tiêu đề, 3 label, ログインユーザ名; shape: 登録 (AU22:AY23), ví dụ giá trị 3 field, icon `image9` (AW26:AX26) | — |
+| (非表示)レイアウト部品 | xlsx_view + xlsx_media | Danh sách loại component; icon 虫眼鏡 `image9.png` | Tham khảo |
 | (非表示)リスト | xlsx_view | Danh sách giá trị chọn cho 項目定義 | Tham khảo |
+
+## 2a. Layout spec (bổ sung sau G0, 2026-10-20)
+
+Đo trên `inputs/layout/image3.png` (EMF 1357×1505 render ×2; px dưới đây quy về kích thước màn
+≈ 0.754 × tọa độ ảnh xem 1800×2000). Nguồn: `[SRC: 【RAS】(BR_Com_004)会議室タブレット登録_画面定義書.xlsx | レイアウト | image3.emf]`.
+
+| Vùng / item | Vị trí | Kích thước (px) | Màu nền / viền / chữ | Icon / hình dạng | State theo ảnh | Nguồn ảnh |
+|---|---|---|---|---|---|---|
+| Shell: menu trái | Trái, full cao | — | Nền #156082, vạch ngăn trắng, chữ trắng; ログオフ #F2F2F2 | Vuông | — | image3 |
+| Nền ngoài | Quanh 2 panel | — | #D9D9D9 | — | — | image3 |
+| Tiêu đề | Panel trắng trên cùng | Cao ≈ 62 | Nền trắng, chữ đen bold ≈ 26px | Góc vuông | Luôn hiển thị | image3 |
+| Panel nội dung | Dưới tiêu đề, cách ≈ 8 | Full còn lại | Nền trắng | Góc vuông | — | image3 |
+| F-01 登録 | Phải, trên bảng | ≈ 95×45 | Nền #D9D9D9, viền #7F7F7F, chữ đen thường | Bo góc | Ẩn ở 初期表示; vùng vẫn giữ | image3, shape AU22:AY23 |
+| Bảng form | Dưới nút | Rộng full panel; dòng ≈ 60 | Chỉ kẻ ngang đen 1px (trên, giữa, dưới), không kẻ dọc | — | — | image3 |
+| Cột label | Trái bảng | ≈ 209 | Nền #156082, chữ trắng thường, canh trái | — | — | image3 |
+| F-02 設置会議室 | Cột giá trị | ≈ 354 | Nền trắng, viền xám mảnh | ▼, bo nhẹ | Luôn enable; 初期 `未選択` | image3, shape U8 |
+| F-03 タブレット端末ID | Cột giá trị | ≈ 724 | Enable: trắng; 初期表示: #D9D9D9; viền xám mảnh | Bo nhẹ | Disable (xám) khi 未選択 | image3 |
+| F-04 延長候補会議室 | Cột giá trị | ≈ 724 | #D9D9D9 (readonly) ở cả 2 state | Bo nhẹ | Readonly | image3, shape U26 |
+| F-05 search icon | Ngay sau F-04, cách ≈ 6 | ≈ 23×23 | Nền #D9D9D9, viền xám | 虫眼鏡 nét đen (`image9.png`) | Ẩn ở 初期表示 | image3, (非表示)レイアウト部品 I11 |
 
 ## 3. Luồng chính theo event
 
@@ -70,7 +89,8 @@ E4-3 … E4-5 chạy trong **một transaction** `[DECISION: A-06]`.
 
 Màn có shell chung: menu trái với 一括予約 / 一括予約一覧 / 会議出席者空き予約 / 会議室タブレット登録,
 tiêu đề `会議室タブレット登録`, ログインユーザ名 `[SRC: BD004 | (非表示)画面レイアウト | B2:M10]`. Tái dùng shell
-layout, select-box, text-input, search-icon-button, action-button, message-box của ras-web (UI_RULES).
+layout, select-box, text-input, search-icon-button, action-button, message-box của ras-web (UI_RULES);
+hình thức hiển thị theo mục 2a, chỉnh ở CSS của màn.
 
 ## 5. Nhánh lỗi và tình huống biên
 
